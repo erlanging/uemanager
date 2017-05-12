@@ -31,8 +31,6 @@ public class UserController extends BaseController{
 	@Autowired
 	private UserService userService;
 	private static Logger logger = LoggerFactory.getLogger(UserController.class);
-	
-	
 	@ResponseBody
 	@RequestMapping(value = "/login", method = {RequestMethod.POST,RequestMethod.GET })
 	public void login(HttpServletRequest request,HttpServletResponse response){
