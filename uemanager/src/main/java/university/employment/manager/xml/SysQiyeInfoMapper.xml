@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="university.employment.manager.dao.SysQiyeInfoMapper" >
+  <resultMap id="BaseResultMap" type="university.employment.manager.entity.SysQiyeInfo" >
+    <id column="qyid" property="qyid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="qyname" property="qyname" jdbcType="VARCHAR" />
+    <result column=" businessNo" property="businessno" jdbcType="VARCHAR" />
+    <result column="nationaltaxregisnum" property="nationaltaxregisnum" jdbcType="VARCHAR" />
+    <result column="localtaxregisnum" property="localtaxregisnum" jdbcType="VARCHAR" />
+    <result column="bankname" property="bankname" jdbcType="VARCHAR" />
+    <result column="bankaccount" property="bankaccount" jdbcType="VARCHAR" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="legalrepresentative" property="legalrepresentative" jdbcType="VARCHAR" />
+    <result column="legalphone" property="legalphone" jdbcType="VARCHAR" />
+    <result column="contactname" property="contactname" jdbcType="VARCHAR" />
+    <result column="contactphone" property="contactphone" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="legalform" property="legalform" jdbcType="VARCHAR" />
+    <result column="numberoemployees" property="numberoemployees" jdbcType="INTEGER" />
+    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+    <result column="product" property="product" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    qyid, uid, qyname, " businessNo", nationaltaxregisnum, localtaxregisnum, bankname, 
+    bankaccount, addr, legalrepresentative, legalphone, contactname, contactphone, fax, 
+    email, type, legalform, numberoemployees, introduction, product
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="university.employment.manager.entity.SysQiyeInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_qiye_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_qiye_info
+    where qyid = #{qyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_qiye_info
+    where qyid = #{qyid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="university.employment.manager.entity.SysQiyeInfoExample" >
+    delete from sys_qiye_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="university.employment.manager.entity.SysQiyeInfo" >
+    insert into sys_qiye_info (qyid, uid, qyname, 
+      " businessNo", nationaltaxregisnum, localtaxregisnum, 
+      bankname, bankaccount, addr, 
+      legalrepresentative, legalphone, contactname, 
+      contactphone, fax, email, 
+      type, legalform, numberoemployees, 
+      introduction, product)
+    values (#{qyid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{qyname,jdbcType=VARCHAR}, 
+      #{businessno,jdbcType=VARCHAR}, #{nationaltaxregisnum,jdbcType=VARCHAR}, #{localtaxregisnum,jdbcType=VARCHAR}, 
+      #{bankname,jdbcType=VARCHAR}, #{bankaccount,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
+      #{legalrepresentative,jdbcType=VARCHAR}, #{legalphone,jdbcType=VARCHAR}, #{contactname,jdbcType=VARCHAR}, 
+      #{contactphone,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{legalform,jdbcType=VARCHAR}, #{numberoemployees,jdbcType=INTEGER}, 
+      #{introduction,jdbcType=VARCHAR}, #{product,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="university.employment.manager.entity.SysQiyeInfo" >
+    insert into sys_qiye_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qyid != null" >
+        qyid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="qyname != null" >
+        qyname,
+      </if>
+      <if test="businessno != null" >
+        " businessNo",
+      </if>
+      <if test="nationaltaxregisnum != null" >
+        nationaltaxregisnum,
+      </if>
+      <if test="localtaxregisnum != null" >
+        localtaxregisnum,
+      </if>
+      <if test="bankname != null" >
+        bankname,
+      </if>
+      <if test="bankaccount != null" >
+        bankaccount,
+      </if>
+      <if test="addr != null" >
+        addr,
+      </if>
+      <if test="legalrepresentative != null" >
+        legalrepresentative,
+      </if>
+      <if test="legalphone != null" >
+        legalphone,
+      </if>
+      <if test="contactname != null" >
+        contactname,
+      </if>
+      <if test="contactphone != null" >
+        contactphone,
+      </if>
+      <if test="fax != null" >
+        fax,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="legalform != null" >
+        legalform,
+      </if>
+      <if test="numberoemployees != null" >
+        numberoemployees,
+      </if>
+      <if test="introduction != null" >
+        introduction,
+      </if>
+      <if test="product != null" >
+        product,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qyid != null" >
+        #{qyid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="qyname != null" >
+        #{qyname,jdbcType=VARCHAR},
+      </if>
+      <if test="businessno != null" >
+        #{businessno,jdbcType=VARCHAR},
+      </if>
+      <if test="nationaltaxregisnum != null" >
+        #{nationaltaxregisnum,jdbcType=VARCHAR},
+      </if>
+      <if test="localtaxregisnum != null" >
+        #{localtaxregisnum,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null" >
+        #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaccount != null" >
+        #{bankaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="legalrepresentative != null" >
+        #{legalrepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="legalphone != null" >
+        #{legalphone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactname != null" >
+        #{contactname,jdbcType=VARCHAR},
+      </if>
+      <if test="contactphone != null" >
+        #{contactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="legalform != null" >
+        #{legalform,jdbcType=VARCHAR},
+      </if>
+      <if test="numberoemployees != null" >
+        #{numberoemployees,jdbcType=INTEGER},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="product != null" >
+        #{product,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="university.employment.manager.entity.SysQiyeInfoExample" resultType="java.lang.Integer" >
+    select count(*) from sys_qiye_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sys_qiye_info
+    <set >
+      <if test="record.qyid != null" >
+        qyid = #{record.qyid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.qyname != null" >
+        qyname = #{record.qyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessno != null" >
+        " businessNo" = #{record.businessno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nationaltaxregisnum != null" >
+        nationaltaxregisnum = #{record.nationaltaxregisnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.localtaxregisnum != null" >
+        localtaxregisnum = #{record.localtaxregisnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankname != null" >
+        bankname = #{record.bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankaccount != null" >
+        bankaccount = #{record.bankaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addr != null" >
+        addr = #{record.addr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalrepresentative != null" >
+        legalrepresentative = #{record.legalrepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalphone != null" >
+        legalphone = #{record.legalphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactname != null" >
+        contactname = #{record.contactname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactphone != null" >
+        contactphone = #{record.contactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fax != null" >
+        fax = #{record.fax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalform != null" >
+        legalform = #{record.legalform,jdbcType=VARCHAR},
+      </if>
+      <if test="record.numberoemployees != null" >
+        numberoemployees = #{record.numberoemployees,jdbcType=INTEGER},
+      </if>
+      <if test="record.introduction != null" >
+        introduction = #{record.introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.product != null" >
+        product = #{record.product,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sys_qiye_info
+    set qyid = #{record.qyid,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=INTEGER},
+      qyname = #{record.qyname,jdbcType=VARCHAR},
+      " businessNo" = #{record.businessno,jdbcType=VARCHAR},
+      nationaltaxregisnum = #{record.nationaltaxregisnum,jdbcType=VARCHAR},
+      localtaxregisnum = #{record.localtaxregisnum,jdbcType=VARCHAR},
+      bankname = #{record.bankname,jdbcType=VARCHAR},
+      bankaccount = #{record.bankaccount,jdbcType=VARCHAR},
+      addr = #{record.addr,jdbcType=VARCHAR},
+      legalrepresentative = #{record.legalrepresentative,jdbcType=VARCHAR},
+      legalphone = #{record.legalphone,jdbcType=VARCHAR},
+      contactname = #{record.contactname,jdbcType=VARCHAR},
+      contactphone = #{record.contactphone,jdbcType=VARCHAR},
+      fax = #{record.fax,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      legalform = #{record.legalform,jdbcType=VARCHAR},
+      numberoemployees = #{record.numberoemployees,jdbcType=INTEGER},
+      introduction = #{record.introduction,jdbcType=VARCHAR},
+      product = #{record.product,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="university.employment.manager.entity.SysQiyeInfo" >
+    update sys_qiye_info
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="qyname != null" >
+        qyname = #{qyname,jdbcType=VARCHAR},
+      </if>
+      <if test="businessno != null" >
+        " businessNo" = #{businessno,jdbcType=VARCHAR},
+      </if>
+      <if test="nationaltaxregisnum != null" >
+        nationaltaxregisnum = #{nationaltaxregisnum,jdbcType=VARCHAR},
+      </if>
+      <if test="localtaxregisnum != null" >
+        localtaxregisnum = #{localtaxregisnum,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null" >
+        bankname = #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaccount != null" >
+        bankaccount = #{bankaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="legalrepresentative != null" >
+        legalrepresentative = #{legalrepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="legalphone != null" >
+        legalphone = #{legalphone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactname != null" >
+        contactname = #{contactname,jdbcType=VARCHAR},
+      </if>
+      <if test="contactphone != null" >
+        contactphone = #{contactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="legalform != null" >
+        legalform = #{legalform,jdbcType=VARCHAR},
+      </if>
+      <if test="numberoemployees != null" >
+        numberoemployees = #{numberoemployees,jdbcType=INTEGER},
+      </if>
+      <if test="introduction != null" >
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="product != null" >
+        product = #{product,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where qyid = #{qyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="university.employment.manager.entity.SysQiyeInfo" >
+    update sys_qiye_info
+    set uid = #{uid,jdbcType=INTEGER},
+      qyname = #{qyname,jdbcType=VARCHAR},
+      " businessNo" = #{businessno,jdbcType=VARCHAR},
+      nationaltaxregisnum = #{nationaltaxregisnum,jdbcType=VARCHAR},
+      localtaxregisnum = #{localtaxregisnum,jdbcType=VARCHAR},
+      bankname = #{bankname,jdbcType=VARCHAR},
+      bankaccount = #{bankaccount,jdbcType=VARCHAR},
+      addr = #{addr,jdbcType=VARCHAR},
+      legalrepresentative = #{legalrepresentative,jdbcType=VARCHAR},
+      legalphone = #{legalphone,jdbcType=VARCHAR},
+      contactname = #{contactname,jdbcType=VARCHAR},
+      contactphone = #{contactphone,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      legalform = #{legalform,jdbcType=VARCHAR},
+      numberoemployees = #{numberoemployees,jdbcType=INTEGER},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      product = #{product,jdbcType=VARCHAR}
+    where qyid = #{qyid,jdbcType=INTEGER}
+  </update>
+</mapper>

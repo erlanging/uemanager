@@ -1,0 +1,136 @@
+/* COMFILL@163.COM 2004.10.10 */
+
+
+a{
+color: #666666;
+text-decoration: none;
+}
+
+a:hover{
+color: #ff2600;
+}
+
+h2{
+font-size:14px;
+color:#ffffff;
+line-height:25px;
+background-color:#0666c5;
+}
+h3{
+font-size: 15px;
+color:#666666;
+}
+
+#header{
+width:100%;
+margin:auto;
+background-color: #0664c2;
+padding:10px 0px 10px 0px !important;
+padding:20px 0px 10px 0px;
+}
+#title{
+font-size:18px;
+color:#ffffff;
+margin:10px 0px 10px 0px;
+}
+
+#general{
+font-size: 15px;
+width:100%;
+margin:auto;
+padding:15px 0px 0px 0px;
+background-color: #ffffff;
+text-align:left;
+}
+.row{
+margin:0px 0px 0px 70px;
+color:#666666;
+line-height:18px;
+}
+
+#realname,#birthday,#mobile,#email,#im{
+letter-spacing: 8px;
+}
+#realnameValue,#birthdayValue,#mobileValue,#emailValue,#imValue{
+margin-left:23px !important;
+margin-left:30px;
+}
+
+#titlename{
+letter-spacing: 1px;
+}
+#titleValue{
+margin-left:30px;
+}
+
+#birthday,#phone,#homepage{
+letter-spacing: 29px;
+}
+#birthdayValue,#phoneValue,#homepageValue{
+margin-left:2px !important;
+margin-left:30px;
+}
+
+/* objective */
+#objective{
+width:100%;
+margin:auto;
+padding:10px 0px 10px 0px !important;
+padding:20px 0px 10px 0px;
+background-color: #ffffff;
+}
+#objective p{
+font-size:14px;
+color:#666666;
+margin:0px;
+}
+
+/* skillareas & history */
+#skillareas,#history{
+width:100%;
+margin:auto;
+padding:10px 0px 10px 0px !important;
+padding:20px 0px 10px 0px;
+background-color:#ffffff;
+}
+#skillareas li.skill,#history li.job,#awards li.award{
+margin:10px 0px 10px 40px;
+text-align:left;
+list-style-type: none;
+}
+.skillset{
+margin:0px !important;
+margin-left:40px;
+}
+.skill li{
+font-size: 15px;
+color:#666666;
+line-height:20px;
+list-style-type: none;
+}
+
+#history div.year,#history div.employer,p{
+font-size: 15px;
+margin-left:40px;
+}
+
+/* skillareas & history */
+#awards{
+width:100%;
+margin:auto;
+padding:10px 0px 10px 0px !important;
+padding:20px 0px 10px 0px;
+background-color: #ffffff;
+}
+#awards div.date,#awards div.organization,p{
+font-size: 15px;
+margin-left:40px;
+}
+#lastModified,#copyright{
+width:100%;
+margin:auto;
+padding:5px 0px 10px 0px;
+background-color: #f8f8f8;
+font-size: 15px;
+color:#666666;
+}

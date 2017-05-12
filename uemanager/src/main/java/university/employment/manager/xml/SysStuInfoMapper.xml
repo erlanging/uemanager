@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="university.employment.manager.dao.SysStuInfoMapper" >
+  <resultMap id="BaseResultMap" type="university.employment.manager.entity.SysStuInfo" >
+    <id column="stuid" property="stuid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="birthdate" property="birthdate" jdbcType="VARCHAR" />
+    <result column="birthplace" property="birthplace" jdbcType="VARCHAR" />
+    <result column="nativeplace" property="nativeplace" jdbcType="VARCHAR" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
+    <result column="studyid" property="studyid" jdbcType="VARCHAR" />
+    <result column="identityId" property="identityid" jdbcType="VARCHAR" />
+    <result column="identityCardType" property="identitycardtype" jdbcType="VARCHAR" />
+    <result column="politicsStatus" property="politicsstatus" jdbcType="VARCHAR" />
+    <result column="healthcondition" property="healthcondition" jdbcType="VARCHAR" />
+    <result column="hukousuozaidi" property="hukousuozaidi" jdbcType="VARCHAR" />
+    <result column="hukouxingzhi" property="hukouxingzhi" jdbcType="VARCHAR" />
+    <result column="techang" property="techang" jdbcType="VARCHAR" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="zipcode" property="zipcode" jdbcType="VARCHAR" />
+    <result column="contactinfo" property="contactinfo" jdbcType="VARCHAR" />
+    <result column="suozaibanji" property="suozaibanji" jdbcType="VARCHAR" />
+    <result column="zhuanye" property="zhuanye" jdbcType="VARCHAR" />
+    <result column="susheId" property="susheid" jdbcType="VARCHAR" />
+    <result column="zhiwu" property="zhiwu" jdbcType="VARCHAR" />
+    <result column="dushengzinv" property="dushengzinv" jdbcType="VARCHAR" />
+    <result column="lianxirenname" property="lianxirenname" jdbcType="VARCHAR" />
+    <result column="lianxirenguanxi" property="lianxirenguanxi" jdbcType="VARCHAR" />
+    <result column="lianxirenage" property="lianxirenage" jdbcType="VARCHAR" />
+    <result column="lianxirenaddr" property="lianxirenaddr" jdbcType="VARCHAR" />
+    <result column="lianxirenphone" property="lianxirenphone" jdbcType="VARCHAR" />
+    <result column="openingtime" property="openingtime" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="connectphone" property="connectphone" jdbcType="VARCHAR" />
+    <result column="lianxirendanwei" property="lianxirendanwei" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    stuid, uid, name, gender, birthdate, birthplace, nativeplace, nation, studyid, identityId, 
+    identityCardType, politicsStatus, healthcondition, hukousuozaidi, hukouxingzhi, techang, 
+    addr, email, zipcode, contactinfo, suozaibanji, zhuanye, susheId, zhiwu, dushengzinv, 
+    lianxirenname, lianxirenguanxi, lianxirenage, lianxirenaddr, lianxirenphone, openingtime, 
+    qq, connectphone, lianxirendanwei
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="university.employment.manager.entity.SysStuInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_stu_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_stu_info
+    where stuid = #{stuid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_stu_info
+    where stuid = #{stuid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="university.employment.manager.entity.SysStuInfoExample" >
+    delete from sys_stu_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="university.employment.manager.entity.SysStuInfo" >
+    insert into sys_stu_info (stuid, uid, name, 
+      gender, birthdate, birthplace, 
+      nativeplace, nation, studyid, 
+      identityId, identityCardType, politicsStatus, 
+      healthcondition, hukousuozaidi, hukouxingzhi, 
+      techang, addr, email, 
+      zipcode, contactinfo, suozaibanji, 
+      zhuanye, susheId, zhiwu, 
+      dushengzinv, lianxirenname, lianxirenguanxi, 
+      lianxirenage, lianxirenaddr, lianxirenphone, 
+      openingtime, qq, connectphone, 
+      lianxirendanwei)
+    values (#{stuid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{birthdate,jdbcType=VARCHAR}, #{birthplace,jdbcType=VARCHAR}, 
+      #{nativeplace,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, #{studyid,jdbcType=VARCHAR}, 
+      #{identityid,jdbcType=VARCHAR}, #{identitycardtype,jdbcType=VARCHAR}, #{politicsstatus,jdbcType=VARCHAR}, 
+      #{healthcondition,jdbcType=VARCHAR}, #{hukousuozaidi,jdbcType=VARCHAR}, #{hukouxingzhi,jdbcType=VARCHAR}, 
+      #{techang,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{zipcode,jdbcType=VARCHAR}, #{contactinfo,jdbcType=VARCHAR}, #{suozaibanji,jdbcType=VARCHAR}, 
+      #{zhuanye,jdbcType=VARCHAR}, #{susheid,jdbcType=VARCHAR}, #{zhiwu,jdbcType=VARCHAR}, 
+      #{dushengzinv,jdbcType=VARCHAR}, #{lianxirenname,jdbcType=VARCHAR}, #{lianxirenguanxi,jdbcType=VARCHAR}, 
+      #{lianxirenage,jdbcType=VARCHAR}, #{lianxirenaddr,jdbcType=VARCHAR}, #{lianxirenphone,jdbcType=VARCHAR}, 
+      #{openingtime,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{connectphone,jdbcType=VARCHAR}, 
+      #{lianxirendanwei,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="university.employment.manager.entity.SysStuInfo" >
+    insert into sys_stu_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stuid != null" >
+        stuid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="birthdate != null" >
+        birthdate,
+      </if>
+      <if test="birthplace != null" >
+        birthplace,
+      </if>
+      <if test="nativeplace != null" >
+        nativeplace,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="studyid != null" >
+        studyid,
+      </if>
+      <if test="identityid != null" >
+        identityId,
+      </if>
+      <if test="identitycardtype != null" >
+        identityCardType,
+      </if>
+      <if test="politicsstatus != null" >
+        politicsStatus,
+      </if>
+      <if test="healthcondition != null" >
+        healthcondition,
+      </if>
+      <if test="hukousuozaidi != null" >
+        hukousuozaidi,
+      </if>
+      <if test="hukouxingzhi != null" >
+        hukouxingzhi,
+      </if>
+      <if test="techang != null" >
+        techang,
+      </if>
+      <if test="addr != null" >
+        addr,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="zipcode != null" >
+        zipcode,
+      </if>
+      <if test="contactinfo != null" >
+        contactinfo,
+      </if>
+      <if test="suozaibanji != null" >
+        suozaibanji,
+      </if>
+      <if test="zhuanye != null" >
+        zhuanye,
+      </if>
+      <if test="susheid != null" >
+        susheId,
+      </if>
+      <if test="zhiwu != null" >
+        zhiwu,
+      </if>
+      <if test="dushengzinv != null" >
+        dushengzinv,
+      </if>
+      <if test="lianxirenname != null" >
+        lianxirenname,
+      </if>
+      <if test="lianxirenguanxi != null" >
+        lianxirenguanxi,
+      </if>
+      <if test="lianxirenage != null" >
+        lianxirenage,
+      </if>
+      <if test="lianxirenaddr != null" >
+        lianxirenaddr,
+      </if>
+      <if test="lianxirenphone != null" >
+        lianxirenphone,
+      </if>
+      <if test="openingtime != null" >
+        openingtime,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="connectphone != null" >
+        connectphone,
+      </if>
+      <if test="lianxirendanwei != null" >
+        lianxirendanwei,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stuid != null" >
+        #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        #{birthdate,jdbcType=VARCHAR},
+      </if>
+      <if test="birthplace != null" >
+        #{birthplace,jdbcType=VARCHAR},
+      </if>
+      <if test="nativeplace != null" >
+        #{nativeplace,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="studyid != null" >
+        #{studyid,jdbcType=VARCHAR},
+      </if>
+      <if test="identityid != null" >
+        #{identityid,jdbcType=VARCHAR},
+      </if>
+      <if test="identitycardtype != null" >
+        #{identitycardtype,jdbcType=VARCHAR},
+      </if>
+      <if test="politicsstatus != null" >
+        #{politicsstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="healthcondition != null" >
+        #{healthcondition,jdbcType=VARCHAR},
+      </if>
+      <if test="hukousuozaidi != null" >
+        #{hukousuozaidi,jdbcType=VARCHAR},
+      </if>
+      <if test="hukouxingzhi != null" >
+        #{hukouxingzhi,jdbcType=VARCHAR},
+      </if>
+      <if test="techang != null" >
+        #{techang,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null" >
+        #{zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactinfo != null" >
+        #{contactinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="suozaibanji != null" >
+        #{suozaibanji,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanye != null" >
+        #{zhuanye,jdbcType=VARCHAR},
+      </if>
+      <if test="susheid != null" >
+        #{susheid,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiwu != null" >
+        #{zhiwu,jdbcType=VARCHAR},
+      </if>
+      <if test="dushengzinv != null" >
+        #{dushengzinv,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxirenname != null" >
+        #{lianxirenname,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxirenguanxi != null" >
+        #{lianxirenguanxi,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxirenage != null" >
+        #{lianxirenage,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxirenaddr != null" >
+        #{lianxirenaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxirenphone != null" >
+        #{lianxirenphone,jdbcType=VARCHAR},
+      </if>
+      <if test="openingtime != null" >
+        #{openingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="connectphone != null" >
+        #{connectphone,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxirendanwei != null" >
+        #{lianxirendanwei,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="university.employment.manager.entity.SysStuInfoExample" resultType="java.lang.Integer" >
+    select count(*) from sys_stu_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sys_stu_info
+    <set >
+      <if test="record.stuid != null" >
+        stuid = #{record.stuid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gender != null" >
+        gender = #{record.gender,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthdate != null" >
+        birthdate = #{record.birthdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthplace != null" >
+        birthplace = #{record.birthplace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nativeplace != null" >
+        nativeplace = #{record.nativeplace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nation != null" >
+        nation = #{record.nation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studyid != null" >
+        studyid = #{record.studyid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.identityid != null" >
+        identityId = #{record.identityid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.identitycardtype != null" >
+        identityCardType = #{record.identitycardtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.politicsstatus != null" >
+        politicsStatus = #{record.politicsstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.healthcondition != null" >
+        healthcondition = #{record.healthcondition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hukousuozaidi != null" >
+        hukousuozaidi = #{record.hukousuozaidi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hukouxingzhi != null" >
+        hukouxingzhi = #{record.hukouxingzhi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.techang != null" >
+        techang = #{record.techang,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addr != null" >
+        addr = #{record.addr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zipcode != null" >
+        zipcode = #{record.zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactinfo != null" >
+        contactinfo = #{record.contactinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.suozaibanji != null" >
+        suozaibanji = #{record.suozaibanji,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhuanye != null" >
+        zhuanye = #{record.zhuanye,jdbcType=VARCHAR},
+      </if>
+      <if test="record.susheid != null" >
+        susheId = #{record.susheid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhiwu != null" >
+        zhiwu = #{record.zhiwu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dushengzinv != null" >
+        dushengzinv = #{record.dushengzinv,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lianxirenname != null" >
+        lianxirenname = #{record.lianxirenname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lianxirenguanxi != null" >
+        lianxirenguanxi = #{record.lianxirenguanxi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lianxirenage != null" >
+        lianxirenage = #{record.lianxirenage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lianxirenaddr != null" >
+        lianxirenaddr = #{record.lianxirenaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lianxirenphone != null" >
+        lianxirenphone = #{record.lianxirenphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.openingtime != null" >
+        openingtime = #{record.openingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qq != null" >
+        qq = #{record.qq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.connectphone != null" >
+        connectphone = #{record.connectphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lianxirendanwei != null" >
+        lianxirendanwei = #{record.lianxirendanwei,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sys_stu_info
+    set stuid = #{record.stuid,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      gender = #{record.gender,jdbcType=VARCHAR},
+      birthdate = #{record.birthdate,jdbcType=VARCHAR},
+      birthplace = #{record.birthplace,jdbcType=VARCHAR},
+      nativeplace = #{record.nativeplace,jdbcType=VARCHAR},
+      nation = #{record.nation,jdbcType=VARCHAR},
+      studyid = #{record.studyid,jdbcType=VARCHAR},
+      identityId = #{record.identityid,jdbcType=VARCHAR},
+      identityCardType = #{record.identitycardtype,jdbcType=VARCHAR},
+      politicsStatus = #{record.politicsstatus,jdbcType=VARCHAR},
+      healthcondition = #{record.healthcondition,jdbcType=VARCHAR},
+      hukousuozaidi = #{record.hukousuozaidi,jdbcType=VARCHAR},
+      hukouxingzhi = #{record.hukouxingzhi,jdbcType=VARCHAR},
+      techang = #{record.techang,jdbcType=VARCHAR},
+      addr = #{record.addr,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      zipcode = #{record.zipcode,jdbcType=VARCHAR},
+      contactinfo = #{record.contactinfo,jdbcType=VARCHAR},
+      suozaibanji = #{record.suozaibanji,jdbcType=VARCHAR},
+      zhuanye = #{record.zhuanye,jdbcType=VARCHAR},
+      susheId = #{record.susheid,jdbcType=VARCHAR},
+      zhiwu = #{record.zhiwu,jdbcType=VARCHAR},
+      dushengzinv = #{record.dushengzinv,jdbcType=VARCHAR},
+      lianxirenname = #{record.lianxirenname,jdbcType=VARCHAR},
+      lianxirenguanxi = #{record.lianxirenguanxi,jdbcType=VARCHAR},
+      lianxirenage = #{record.lianxirenage,jdbcType=VARCHAR},
+      lianxirenaddr = #{record.lianxirenaddr,jdbcType=VARCHAR},
+      lianxirenphone = #{record.lianxirenphone,jdbcType=VARCHAR},
+      openingtime = #{record.openingtime,jdbcType=VARCHAR},
+      qq = #{record.qq,jdbcType=VARCHAR},
+      connectphone = #{record.connectphone,jdbcType=VARCHAR},
+      lianxirendanwei = #{record.lianxirendanwei,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="university.employment.manager.entity.SysStuInfo" >
+    update sys_stu_info
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        birthdate = #{birthdate,jdbcType=VARCHAR},
+      </if>
+      <if test="birthplace != null" >
+        birthplace = #{birthplace,jdbcType=VARCHAR},
+      </if>
+      <if test="nativeplace != null" >
+        nativeplace = #{nativeplace,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="studyid != null" >
+        studyid = #{studyid,jdbcType=VARCHAR},
+      </if>
+      <if test="identityid != null" >
+        identityId = #{identityid,jdbcType=VARCHAR},
+      </if>
+      <if test="identitycardtype != null" >
+        identityCardType = #{identitycardtype,jdbcType=VARCHAR},
+      </if>
+      <if test="politicsstatus != null" >
+        politicsStatus = #{politicsstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="healthcondition != null" >
+        healthcondition = #{healthcondition,jdbcType=VARCHAR},
+      </if>
+      <if test="hukousuozaidi != null" >
+        hukousuozaidi = #{hukousuozaidi,jdbcType=VARCHAR},
+      </if>
+      <if test="hukouxingzhi != null" >
+        hukouxingzhi = #{hukouxingzhi,jdbcType=VARCHAR},
+      </if>
+      <if test="techang != null" >
+        techang = #{techang,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null" >
+        zipcode = #{zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactinfo != null" >
+        contactinfo = #{contactinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="suozaibanji != null" >
+        suozaibanji = #{suozaibanji,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanye != null" >
+        zhuanye = #{zhuanye,jdbcType=VARCHAR},
+      </if>
+      <if test="susheid != null" >
+        susheId = #{susheid,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiwu != null" >
+        zhiwu = #{zhiwu,jdbcType=VARCHAR},
+      </if>
+      <if test="dushengzinv != null" >
+        dushengzinv = #{dushengzinv,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxirenname != null" >
+        lianxirenname = #{lianxirenname,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxirenguanxi != null" >
+        lianxirenguanxi = #{lianxirenguanxi,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxirenage != null" >
+        lianxirenage = #{lianxirenage,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxirenaddr != null" >
+        lianxirenaddr = #{lianxirenaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxirenphone != null" >
+        lianxirenphone = #{lianxirenphone,jdbcType=VARCHAR},
+      </if>
+      <if test="openingtime != null" >
+        openingtime = #{openingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="connectphone != null" >
+        connectphone = #{connectphone,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxirendanwei != null" >
+        lianxirendanwei = #{lianxirendanwei,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where stuid = #{stuid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="university.employment.manager.entity.SysStuInfo" >
+    update sys_stu_info
+    set uid = #{uid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      birthdate = #{birthdate,jdbcType=VARCHAR},
+      birthplace = #{birthplace,jdbcType=VARCHAR},
+      nativeplace = #{nativeplace,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      studyid = #{studyid,jdbcType=VARCHAR},
+      identityId = #{identityid,jdbcType=VARCHAR},
+      identityCardType = #{identitycardtype,jdbcType=VARCHAR},
+      politicsStatus = #{politicsstatus,jdbcType=VARCHAR},
+      healthcondition = #{healthcondition,jdbcType=VARCHAR},
+      hukousuozaidi = #{hukousuozaidi,jdbcType=VARCHAR},
+      hukouxingzhi = #{hukouxingzhi,jdbcType=VARCHAR},
+      techang = #{techang,jdbcType=VARCHAR},
+      addr = #{addr,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      zipcode = #{zipcode,jdbcType=VARCHAR},
+      contactinfo = #{contactinfo,jdbcType=VARCHAR},
+      suozaibanji = #{suozaibanji,jdbcType=VARCHAR},
+      zhuanye = #{zhuanye,jdbcType=VARCHAR},
+      susheId = #{susheid,jdbcType=VARCHAR},
+      zhiwu = #{zhiwu,jdbcType=VARCHAR},
+      dushengzinv = #{dushengzinv,jdbcType=VARCHAR},
+      lianxirenname = #{lianxirenname,jdbcType=VARCHAR},
+      lianxirenguanxi = #{lianxirenguanxi,jdbcType=VARCHAR},
+      lianxirenage = #{lianxirenage,jdbcType=VARCHAR},
+      lianxirenaddr = #{lianxirenaddr,jdbcType=VARCHAR},
+      lianxirenphone = #{lianxirenphone,jdbcType=VARCHAR},
+      openingtime = #{openingtime,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      connectphone = #{connectphone,jdbcType=VARCHAR},
+      lianxirendanwei = #{lianxirendanwei,jdbcType=VARCHAR}
+    where stuid = #{stuid,jdbcType=INTEGER}
+  </update>
+</mapper>

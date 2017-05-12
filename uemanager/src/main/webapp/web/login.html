@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>用户登录</title>
+<meta name="author" content="DeathGhost">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<style>
+body{height:100%;background:#2659a8;overflow:hidden;}
+canvas{z-index:-1;position:absolute;}
+</style>
+<script src="js/jquery.min.js"></script>
+<script src="js/Particleground.js"></script>
+<script src="js/login.js"></script>
+<script src="js/student.register.js"></script>
+<script>
+$(document).ready(function() {
+  //粒子背景特效
+  $('body').particleground({
+    dotColor: '#5cbdaa',
+    lineColor: '#5cbdaa'
+  });
+  //验证码
+  createCode();
+  //测试提交，对接程序删除即可
+
+});
+</script>
+</head>
+<body><canvas class="pg-canvas" width="1664" height="827"></canvas>
+<dl class="admin_login">
+ <dt>
+  <strong>高校学生就业管理系统</strong>
+  <em>College student employment management system</em>
+ </dt>
+ <div class="header">
+        <div class="switch" id="switch"><a class="switch_btn_focus" id="switch_qlogin" href="javascript:void(0);" tabindex="7">快速登录</a>
+			<a class="switch_btn" id="switch_login" href="javascript:void(0);" tabindex="8">快速注册</a><div class="switch_bottom" id="switch_bottom" style="position: absolute; width: 70px; left: 0px;"></div>
+        </div>
+ </div> 
+ <div class="web_qr_login" id="web_qr_login" style="display: block; height: 235px;">
+  	<dd class="user_icon">
+  		<input placeholder="账号" class="login_txtbx" type="text" id="login_name">
+ 	</dd>
+ 	<dd class="pwd_icon">
+ 		<input placeholder="密码" class="login_txtbx" type="password" id="pwd">
+ 	</dd>
+	 <dd class="val_icon">
+	  <div class="checkcode">
+	    <input id="J_codetext" placeholder="验证码" maxlength="4" class="login_txtbx" type="text">
+	    <canvas class="J_codeimg" id="myCanvas" onclick="createCode()">对不起，您的浏览器不支持canvas，请下载最新版浏览器!</canvas>
+	  </div>
+	 </dd>
+	 <dd>
+	  <input value="立即登录" class="submit_btn" type="button" onclick="login();">
+	 </dd>
+ </div>
+	
+<div class="qlogin" id="qlogin" style="display: none;">
+  	<dd class="user_icon">
+  		<input placeholder="账号" class="login_txtbx" type="text" id="register_name">
+ 	</dd>
+ 	<dd class="pwd_icon">
+ 		<input placeholder="密码" class="login_txtbx" type="password" id="password">
+ 	</dd>
+ 	<dd class="ensure_pwd_icon">
+ 		<input placeholder="确认密码" class="login_txtbx" type="password" id="repeat_password">
+ 	</dd>
+ 	<dd class="select_role_icon">
+ 		<select id="user_type" class="login_txtbx1" name="user_type" title="用户角色">
+			<option id="student" value="0">学生用户</option>
+			<option id="company" value="1">企业用户</option>
+			<option id="manager_center" value="2">就业中心管理人员</option>
+		</select><br />
+ 	</dd>
+	 <dd>
+	  <input value="立即注册" class="submit_btn" type="button" onclick="register_user();">
+	 </dd>  		
+</div>
+	
+ <dd>
+  <p>© 2017-2017 liang 版权所有</p>
+  <p>安工程-物联网132</p>
+ </dd>
+</dl>
+
+</body></html>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="university.employment.manager.dao.SysJiuyetongjiMapper" >
+  <resultMap id="BaseResultMap" type="university.employment.manager.entity.SysJiuyetongji" >
+    <id column="tjid" property="tjid" jdbcType="INTEGER" />
+    <result column="year" property="year" jdbcType="INTEGER" />
+    <result column="totalnum" property="totalnum" jdbcType="INTEGER" />
+    <result column="employmentnum" property="employmentnum" jdbcType="INTEGER" />
+    <result column="salaryavg" property="salaryavg" jdbcType="INTEGER" />
+    <result column="postgraduatenum" property="postgraduatenum" jdbcType="INTEGER" />
+    <result column="civilservantnum" property="civilservantnum" jdbcType="INTEGER" />
+    <result column="other" property="other" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    tjid, year, totalnum, employmentnum, salaryavg, postgraduatenum, civilservantnum, 
+    other
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="university.employment.manager.entity.SysJiuyetongjiExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_jiuyetongji
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_jiuyetongji
+    where tjid = #{tjid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_jiuyetongji
+    where tjid = #{tjid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="university.employment.manager.entity.SysJiuyetongjiExample" >
+    delete from sys_jiuyetongji
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="university.employment.manager.entity.SysJiuyetongji" >
+    insert into sys_jiuyetongji (tjid, year, totalnum, 
+      employmentnum, salaryavg, postgraduatenum, 
+      civilservantnum, other)
+    values (#{tjid,jdbcType=INTEGER}, #{year,jdbcType=INTEGER}, #{totalnum,jdbcType=INTEGER}, 
+      #{employmentnum,jdbcType=INTEGER}, #{salaryavg,jdbcType=INTEGER}, #{postgraduatenum,jdbcType=INTEGER}, 
+      #{civilservantnum,jdbcType=INTEGER}, #{other,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="university.employment.manager.entity.SysJiuyetongji" >
+    insert into sys_jiuyetongji
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tjid != null" >
+        tjid,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="totalnum != null" >
+        totalnum,
+      </if>
+      <if test="employmentnum != null" >
+        employmentnum,
+      </if>
+      <if test="salaryavg != null" >
+        salaryavg,
+      </if>
+      <if test="postgraduatenum != null" >
+        postgraduatenum,
+      </if>
+      <if test="civilservantnum != null" >
+        civilservantnum,
+      </if>
+      <if test="other != null" >
+        other,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tjid != null" >
+        #{tjid,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="totalnum != null" >
+        #{totalnum,jdbcType=INTEGER},
+      </if>
+      <if test="employmentnum != null" >
+        #{employmentnum,jdbcType=INTEGER},
+      </if>
+      <if test="salaryavg != null" >
+        #{salaryavg,jdbcType=INTEGER},
+      </if>
+      <if test="postgraduatenum != null" >
+        #{postgraduatenum,jdbcType=INTEGER},
+      </if>
+      <if test="civilservantnum != null" >
+        #{civilservantnum,jdbcType=INTEGER},
+      </if>
+      <if test="other != null" >
+        #{other,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="university.employment.manager.entity.SysJiuyetongjiExample" resultType="java.lang.Integer" >
+    select count(*) from sys_jiuyetongji
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sys_jiuyetongji
+    <set >
+      <if test="record.tjid != null" >
+        tjid = #{record.tjid,jdbcType=INTEGER},
+      </if>
+      <if test="record.year != null" >
+        year = #{record.year,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalnum != null" >
+        totalnum = #{record.totalnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.employmentnum != null" >
+        employmentnum = #{record.employmentnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.salaryavg != null" >
+        salaryavg = #{record.salaryavg,jdbcType=INTEGER},
+      </if>
+      <if test="record.postgraduatenum != null" >
+        postgraduatenum = #{record.postgraduatenum,jdbcType=INTEGER},
+      </if>
+      <if test="record.civilservantnum != null" >
+        civilservantnum = #{record.civilservantnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.other != null" >
+        other = #{record.other,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sys_jiuyetongji
+    set tjid = #{record.tjid,jdbcType=INTEGER},
+      year = #{record.year,jdbcType=INTEGER},
+      totalnum = #{record.totalnum,jdbcType=INTEGER},
+      employmentnum = #{record.employmentnum,jdbcType=INTEGER},
+      salaryavg = #{record.salaryavg,jdbcType=INTEGER},
+      postgraduatenum = #{record.postgraduatenum,jdbcType=INTEGER},
+      civilservantnum = #{record.civilservantnum,jdbcType=INTEGER},
+      other = #{record.other,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="university.employment.manager.entity.SysJiuyetongji" >
+    update sys_jiuyetongji
+    <set >
+      <if test="year != null" >
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="totalnum != null" >
+        totalnum = #{totalnum,jdbcType=INTEGER},
+      </if>
+      <if test="employmentnum != null" >
+        employmentnum = #{employmentnum,jdbcType=INTEGER},
+      </if>
+      <if test="salaryavg != null" >
+        salaryavg = #{salaryavg,jdbcType=INTEGER},
+      </if>
+      <if test="postgraduatenum != null" >
+        postgraduatenum = #{postgraduatenum,jdbcType=INTEGER},
+      </if>
+      <if test="civilservantnum != null" >
+        civilservantnum = #{civilservantnum,jdbcType=INTEGER},
+      </if>
+      <if test="other != null" >
+        other = #{other,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tjid = #{tjid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="university.employment.manager.entity.SysJiuyetongji" >
+    update sys_jiuyetongji
+    set year = #{year,jdbcType=INTEGER},
+      totalnum = #{totalnum,jdbcType=INTEGER},
+      employmentnum = #{employmentnum,jdbcType=INTEGER},
+      salaryavg = #{salaryavg,jdbcType=INTEGER},
+      postgraduatenum = #{postgraduatenum,jdbcType=INTEGER},
+      civilservantnum = #{civilservantnum,jdbcType=INTEGER},
+      other = #{other,jdbcType=INTEGER}
+    where tjid = #{tjid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>访问出错</title>
+<meta name="author" content="DeathGhost">
+<link rel="stylesheet" type="text/css" href="css/style.css" tppabs="css/style.css">
+<style>
+body{height:100%;background:#2659a8;overflow:hidden;}
+canvas{z-index:-1;position:absolute;}
+</style>
+<script src="js/jquery.min.js"></script>
+<script src="js/Particleground.js" tppabs="js/Particleground.js"></script>
+<script src="js/login.js" tppabs="js/login.js"></script>
+<script>
+$(document).ready(function() {
+  //粒子背景特效
+  $('body').particleground({
+    dotColor: '#5cbdaa',
+    lineColor: '#5cbdaa'
+  });
+  //验证码
+  createCode();
+  //测试提交，对接程序删除即可
+
+});
+</script>
+</head>
+<body><canvas class="pg-canvas" width="1664" height="827"></canvas>
+<dl class="admin_login">
+ <dt>
+  <strong>高校学生就业管理系统</strong>
+  <em>College student employment management system</em>
+ </dt>
+	<dd style="width: 100%;">
+		<p style="font-size: 24px;color: red;">系统繁忙，请稍后再试！</p>
+	</dd>	
+ <dd>
+  <p>© 2017-2017 liang 版权所有</p>
+  <p>安工程-物联网132</p>
+ </dd>
+</dl>
+
+</body></html>

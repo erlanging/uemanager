@@ -1,0 +1,81 @@
+//导航 
+body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, form, fieldset, input, textarea, blockquote {
+	margin: 0; padding: 0; border: 0;
+}
+
+body {
+	background: #f5f0e0 url(../images/noise.png);
+}
+
+#container {
+	height: 700px;
+	background: url(../images/bg.jpg) center top no-repeat;
+}
+
+ul#nav {
+	width: 700px; margin: 0 auto; text-align: center; overflow: hidden;
+}
+ul#nav li {
+	float: left; list-style: none; 
+}
+ul#nav li a {
+	display: block; width: 97px; height: 77px; 
+	padding: 72px 0 0 0; margin: 0 32px 0 32px;
+	font: bold 16px Helvetica, Arial, Sans-Serif; text-transform: uppercase;
+	color: #9c5959; text-shadow: 0 1px 3px #c4bda6; text-decoration: none;
+	
+	background: url(../images/label.png) 0 -149px no-repeat; 
+}
+ul#nav li a:hover {
+	background: url(../images/label.png) 0 0 no-repeat;
+	color: #eee9d9; text-shadow: 0 2px 3px #4c2222;
+}
+
+ul#nav li a.js:hover {
+	background: url(../images/label.png) 0 -149px no-repeat;
+}
+
+
+
+
+#thead{
+	background-color: #99CC00;
+	font-weight: bold;
+	color:#0000FF;
+}
+		
+#current_page_number{
+	border: none;
+	border-bottom:1px solid;
+	width: 20px;
+	text-align: center;
+}
+body {
+	text-align: center;
+}
+		
+.centering_in_html,table{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.font_red{
+	color: red;
+}
+
+.gender_font_blue{
+	color:blue;
+}
+
+tr:hover{background:#ffff00;}
+
+.left_align{
+	text-align:left;
+}
+
+td{
+	width:180px;
+	font-size: 24px;
+}
+
+

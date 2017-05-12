@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="university.employment.manager.dao.SysStuDanganMapper" >
+  <resultMap id="BaseResultMap" type="university.employment.manager.entity.SysStuDangan" >
+    <id column="did" property="did" jdbcType="INTEGER" />
+    <result column="stuid" property="stuid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="INTEGER" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="zhengzhimianmao" property="zhengzhimianmao" jdbcType="VARCHAR" />
+    <result column="rutuandate" property="rutuandate" jdbcType="DATE" />
+    <result column="identityid" property="identityid" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="mail" property="mail" jdbcType="VARCHAR" />
+    <result column="smallschool" property="smallschool" jdbcType="VARCHAR" />
+    <result column="smallschooldate" property="smallschooldate" jdbcType="VARCHAR" />
+    <result column="smallschoolmaster" property="smallschoolmaster" jdbcType="VARCHAR" />
+    <result column="midschool" property="midschool" jdbcType="VARCHAR" />
+    <result column="midschooldate" property="midschooldate" jdbcType="VARCHAR" />
+    <result column="highschool" property="highschool" jdbcType="VARCHAR" />
+    <result column="midschoolmaster" property="midschoolmaster" jdbcType="VARCHAR" />
+    <result column="highschoolmaster" property="highschoolmaster" jdbcType="VARCHAR" />
+    <result column="highschooldate" property="highschooldate" jdbcType="VARCHAR" />
+    <result column="universer" property="universer" jdbcType="VARCHAR" />
+    <result column=" academy" property="academy" jdbcType="VARCHAR" />
+    <result column="speciality" property="speciality" jdbcType="VARCHAR" />
+    <result column="awards" property="awards" jdbcType="VARCHAR" />
+    <result column="punish" property="punish" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    did, stuid, name, gender, nation, birthday, zhengzhimianmao, rutuandate, identityid, 
+    phone, mail, smallschool, smallschooldate, smallschoolmaster, midschool, midschooldate, 
+    highschool, midschoolmaster, highschoolmaster, highschooldate, universer, " academy", 
+    speciality, awards, punish
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="university.employment.manager.entity.SysStuDanganExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_stu_dangan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_stu_dangan
+    where did = #{did,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_stu_dangan
+    where did = #{did,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="university.employment.manager.entity.SysStuDanganExample" >
+    delete from sys_stu_dangan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="university.employment.manager.entity.SysStuDangan" >
+    insert into sys_stu_dangan (did, stuid, name, 
+      gender, nation, birthday, 
+      zhengzhimianmao, rutuandate, identityid, 
+      phone, mail, smallschool, 
+      smallschooldate, smallschoolmaster, midschool, 
+      midschooldate, highschool, midschoolmaster, 
+      highschoolmaster, highschooldate, universer, 
+      " academy", speciality, awards, 
+      punish)
+    values (#{did,jdbcType=INTEGER}, #{stuid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=INTEGER}, #{nation,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
+      #{zhengzhimianmao,jdbcType=VARCHAR}, #{rutuandate,jdbcType=DATE}, #{identityid,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{mail,jdbcType=VARCHAR}, #{smallschool,jdbcType=VARCHAR}, 
+      #{smallschooldate,jdbcType=VARCHAR}, #{smallschoolmaster,jdbcType=VARCHAR}, #{midschool,jdbcType=VARCHAR}, 
+      #{midschooldate,jdbcType=VARCHAR}, #{highschool,jdbcType=VARCHAR}, #{midschoolmaster,jdbcType=VARCHAR}, 
+      #{highschoolmaster,jdbcType=VARCHAR}, #{highschooldate,jdbcType=VARCHAR}, #{universer,jdbcType=VARCHAR}, 
+      #{academy,jdbcType=VARCHAR}, #{speciality,jdbcType=VARCHAR}, #{awards,jdbcType=VARCHAR}, 
+      #{punish,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="university.employment.manager.entity.SysStuDangan" >
+    insert into sys_stu_dangan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        did,
+      </if>
+      <if test="stuid != null" >
+        stuid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="zhengzhimianmao != null" >
+        zhengzhimianmao,
+      </if>
+      <if test="rutuandate != null" >
+        rutuandate,
+      </if>
+      <if test="identityid != null" >
+        identityid,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="mail != null" >
+        mail,
+      </if>
+      <if test="smallschool != null" >
+        smallschool,
+      </if>
+      <if test="smallschooldate != null" >
+        smallschooldate,
+      </if>
+      <if test="smallschoolmaster != null" >
+        smallschoolmaster,
+      </if>
+      <if test="midschool != null" >
+        midschool,
+      </if>
+      <if test="midschooldate != null" >
+        midschooldate,
+      </if>
+      <if test="highschool != null" >
+        highschool,
+      </if>
+      <if test="midschoolmaster != null" >
+        midschoolmaster,
+      </if>
+      <if test="highschoolmaster != null" >
+        highschoolmaster,
+      </if>
+      <if test="highschooldate != null" >
+        highschooldate,
+      </if>
+      <if test="universer != null" >
+        universer,
+      </if>
+      <if test="academy != null" >
+        " academy",
+      </if>
+      <if test="speciality != null" >
+        speciality,
+      </if>
+      <if test="awards != null" >
+        awards,
+      </if>
+      <if test="punish != null" >
+        punish,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="stuid != null" >
+        #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="zhengzhimianmao != null" >
+        #{zhengzhimianmao,jdbcType=VARCHAR},
+      </if>
+      <if test="rutuandate != null" >
+        #{rutuandate,jdbcType=DATE},
+      </if>
+      <if test="identityid != null" >
+        #{identityid,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null" >
+        #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="smallschool != null" >
+        #{smallschool,jdbcType=VARCHAR},
+      </if>
+      <if test="smallschooldate != null" >
+        #{smallschooldate,jdbcType=VARCHAR},
+      </if>
+      <if test="smallschoolmaster != null" >
+        #{smallschoolmaster,jdbcType=VARCHAR},
+      </if>
+      <if test="midschool != null" >
+        #{midschool,jdbcType=VARCHAR},
+      </if>
+      <if test="midschooldate != null" >
+        #{midschooldate,jdbcType=VARCHAR},
+      </if>
+      <if test="highschool != null" >
+        #{highschool,jdbcType=VARCHAR},
+      </if>
+      <if test="midschoolmaster != null" >
+        #{midschoolmaster,jdbcType=VARCHAR},
+      </if>
+      <if test="highschoolmaster != null" >
+        #{highschoolmaster,jdbcType=VARCHAR},
+      </if>
+      <if test="highschooldate != null" >
+        #{highschooldate,jdbcType=VARCHAR},
+      </if>
+      <if test="universer != null" >
+        #{universer,jdbcType=VARCHAR},
+      </if>
+      <if test="academy != null" >
+        #{academy,jdbcType=VARCHAR},
+      </if>
+      <if test="speciality != null" >
+        #{speciality,jdbcType=VARCHAR},
+      </if>
+      <if test="awards != null" >
+        #{awards,jdbcType=VARCHAR},
+      </if>
+      <if test="punish != null" >
+        #{punish,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="university.employment.manager.entity.SysStuDanganExample" resultType="java.lang.Integer" >
+    select count(*) from sys_stu_dangan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sys_stu_dangan
+    <set >
+      <if test="record.did != null" >
+        did = #{record.did,jdbcType=INTEGER},
+      </if>
+      <if test="record.stuid != null" >
+        stuid = #{record.stuid,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gender != null" >
+        gender = #{record.gender,jdbcType=INTEGER},
+      </if>
+      <if test="record.nation != null" >
+        nation = #{record.nation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthday != null" >
+        birthday = #{record.birthday,jdbcType=DATE},
+      </if>
+      <if test="record.zhengzhimianmao != null" >
+        zhengzhimianmao = #{record.zhengzhimianmao,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rutuandate != null" >
+        rutuandate = #{record.rutuandate,jdbcType=DATE},
+      </if>
+      <if test="record.identityid != null" >
+        identityid = #{record.identityid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mail != null" >
+        mail = #{record.mail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.smallschool != null" >
+        smallschool = #{record.smallschool,jdbcType=VARCHAR},
+      </if>
+      <if test="record.smallschooldate != null" >
+        smallschooldate = #{record.smallschooldate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.smallschoolmaster != null" >
+        smallschoolmaster = #{record.smallschoolmaster,jdbcType=VARCHAR},
+      </if>
+      <if test="record.midschool != null" >
+        midschool = #{record.midschool,jdbcType=VARCHAR},
+      </if>
+      <if test="record.midschooldate != null" >
+        midschooldate = #{record.midschooldate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.highschool != null" >
+        highschool = #{record.highschool,jdbcType=VARCHAR},
+      </if>
+      <if test="record.midschoolmaster != null" >
+        midschoolmaster = #{record.midschoolmaster,jdbcType=VARCHAR},
+      </if>
+      <if test="record.highschoolmaster != null" >
+        highschoolmaster = #{record.highschoolmaster,jdbcType=VARCHAR},
+      </if>
+      <if test="record.highschooldate != null" >
+        highschooldate = #{record.highschooldate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.universer != null" >
+        universer = #{record.universer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.academy != null" >
+        " academy" = #{record.academy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.speciality != null" >
+        speciality = #{record.speciality,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awards != null" >
+        awards = #{record.awards,jdbcType=VARCHAR},
+      </if>
+      <if test="record.punish != null" >
+        punish = #{record.punish,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sys_stu_dangan
+    set did = #{record.did,jdbcType=INTEGER},
+      stuid = #{record.stuid,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      gender = #{record.gender,jdbcType=INTEGER},
+      nation = #{record.nation,jdbcType=VARCHAR},
+      birthday = #{record.birthday,jdbcType=DATE},
+      zhengzhimianmao = #{record.zhengzhimianmao,jdbcType=VARCHAR},
+      rutuandate = #{record.rutuandate,jdbcType=DATE},
+      identityid = #{record.identityid,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      mail = #{record.mail,jdbcType=VARCHAR},
+      smallschool = #{record.smallschool,jdbcType=VARCHAR},
+      smallschooldate = #{record.smallschooldate,jdbcType=VARCHAR},
+      smallschoolmaster = #{record.smallschoolmaster,jdbcType=VARCHAR},
+      midschool = #{record.midschool,jdbcType=VARCHAR},
+      midschooldate = #{record.midschooldate,jdbcType=VARCHAR},
+      highschool = #{record.highschool,jdbcType=VARCHAR},
+      midschoolmaster = #{record.midschoolmaster,jdbcType=VARCHAR},
+      highschoolmaster = #{record.highschoolmaster,jdbcType=VARCHAR},
+      highschooldate = #{record.highschooldate,jdbcType=VARCHAR},
+      universer = #{record.universer,jdbcType=VARCHAR},
+      " academy" = #{record.academy,jdbcType=VARCHAR},
+      speciality = #{record.speciality,jdbcType=VARCHAR},
+      awards = #{record.awards,jdbcType=VARCHAR},
+      punish = #{record.punish,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="university.employment.manager.entity.SysStuDangan" >
+    update sys_stu_dangan
+    <set >
+      <if test="stuid != null" >
+        stuid = #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="zhengzhimianmao != null" >
+        zhengzhimianmao = #{zhengzhimianmao,jdbcType=VARCHAR},
+      </if>
+      <if test="rutuandate != null" >
+        rutuandate = #{rutuandate,jdbcType=DATE},
+      </if>
+      <if test="identityid != null" >
+        identityid = #{identityid,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null" >
+        mail = #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="smallschool != null" >
+        smallschool = #{smallschool,jdbcType=VARCHAR},
+      </if>
+      <if test="smallschooldate != null" >
+        smallschooldate = #{smallschooldate,jdbcType=VARCHAR},
+      </if>
+      <if test="smallschoolmaster != null" >
+        smallschoolmaster = #{smallschoolmaster,jdbcType=VARCHAR},
+      </if>
+      <if test="midschool != null" >
+        midschool = #{midschool,jdbcType=VARCHAR},
+      </if>
+      <if test="midschooldate != null" >
+        midschooldate = #{midschooldate,jdbcType=VARCHAR},
+      </if>
+      <if test="highschool != null" >
+        highschool = #{highschool,jdbcType=VARCHAR},
+      </if>
+      <if test="midschoolmaster != null" >
+        midschoolmaster = #{midschoolmaster,jdbcType=VARCHAR},
+      </if>
+      <if test="highschoolmaster != null" >
+        highschoolmaster = #{highschoolmaster,jdbcType=VARCHAR},
+      </if>
+      <if test="highschooldate != null" >
+        highschooldate = #{highschooldate,jdbcType=VARCHAR},
+      </if>
+      <if test="universer != null" >
+        universer = #{universer,jdbcType=VARCHAR},
+      </if>
+      <if test="academy != null" >
+        " academy" = #{academy,jdbcType=VARCHAR},
+      </if>
+      <if test="speciality != null" >
+        speciality = #{speciality,jdbcType=VARCHAR},
+      </if>
+      <if test="awards != null" >
+        awards = #{awards,jdbcType=VARCHAR},
+      </if>
+      <if test="punish != null" >
+        punish = #{punish,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="university.employment.manager.entity.SysStuDangan" >
+    update sys_stu_dangan
+    set stuid = #{stuid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
+      nation = #{nation,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      zhengzhimianmao = #{zhengzhimianmao,jdbcType=VARCHAR},
+      rutuandate = #{rutuandate,jdbcType=DATE},
+      identityid = #{identityid,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      mail = #{mail,jdbcType=VARCHAR},
+      smallschool = #{smallschool,jdbcType=VARCHAR},
+      smallschooldate = #{smallschooldate,jdbcType=VARCHAR},
+      smallschoolmaster = #{smallschoolmaster,jdbcType=VARCHAR},
+      midschool = #{midschool,jdbcType=VARCHAR},
+      midschooldate = #{midschooldate,jdbcType=VARCHAR},
+      highschool = #{highschool,jdbcType=VARCHAR},
+      midschoolmaster = #{midschoolmaster,jdbcType=VARCHAR},
+      highschoolmaster = #{highschoolmaster,jdbcType=VARCHAR},
+      highschooldate = #{highschooldate,jdbcType=VARCHAR},
+      universer = #{universer,jdbcType=VARCHAR},
+      " academy" = #{academy,jdbcType=VARCHAR},
+      speciality = #{speciality,jdbcType=VARCHAR},
+      awards = #{awards,jdbcType=VARCHAR},
+      punish = #{punish,jdbcType=VARCHAR}
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+</mapper>

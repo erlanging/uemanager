@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="university.employment.manager.dao.SysQiyeZhaopinMapper" >
+  <resultMap id="BaseResultMap" type="university.employment.manager.entity.SysQiyeZhaopin" >
+    <id column="zpid" property="zpid" jdbcType="INTEGER" />
+    <result column="qyid" property="qyid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="salary" property="salary" jdbcType="VARCHAR" />
+    <result column="workplace" property="workplace" jdbcType="VARCHAR" />
+    <result column="publishtime" property="publishtime" jdbcType="TIMESTAMP" />
+    <result column="workexperience" property="workexperience" jdbcType="VARCHAR" />
+    <result column="recruitnum" property="recruitnum" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="jobdescription" property="jobdescription" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    zpid, qyid, name, salary, workplace, publishtime, workexperience, recruitnum, type, 
+    jobdescription, status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="university.employment.manager.entity.SysQiyeZhaopinExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_qiye_zhaopin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_qiye_zhaopin
+    where zpid = #{zpid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_qiye_zhaopin
+    where zpid = #{zpid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="university.employment.manager.entity.SysQiyeZhaopinExample" >
+    delete from sys_qiye_zhaopin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="university.employment.manager.entity.SysQiyeZhaopin" >
+    insert into sys_qiye_zhaopin (zpid, qyid, name, 
+      salary, workplace, publishtime, 
+      workexperience, recruitnum, type, 
+      jobdescription, status)
+    values (#{zpid,jdbcType=INTEGER}, #{qyid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{salary,jdbcType=VARCHAR}, #{workplace,jdbcType=VARCHAR}, #{publishtime,jdbcType=TIMESTAMP}, 
+      #{workexperience,jdbcType=VARCHAR}, #{recruitnum,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, 
+      #{jobdescription,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="university.employment.manager.entity.SysQiyeZhaopin" >
+    insert into sys_qiye_zhaopin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="zpid != null" >
+        zpid,
+      </if>
+      <if test="qyid != null" >
+        qyid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="salary != null" >
+        salary,
+      </if>
+      <if test="workplace != null" >
+        workplace,
+      </if>
+      <if test="publishtime != null" >
+        publishtime,
+      </if>
+      <if test="workexperience != null" >
+        workexperience,
+      </if>
+      <if test="recruitnum != null" >
+        recruitnum,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="jobdescription != null" >
+        jobdescription,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="zpid != null" >
+        #{zpid,jdbcType=INTEGER},
+      </if>
+      <if test="qyid != null" >
+        #{qyid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null" >
+        #{salary,jdbcType=VARCHAR},
+      </if>
+      <if test="workplace != null" >
+        #{workplace,jdbcType=VARCHAR},
+      </if>
+      <if test="publishtime != null" >
+        #{publishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workexperience != null" >
+        #{workexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitnum != null" >
+        #{recruitnum,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="jobdescription != null" >
+        #{jobdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="university.employment.manager.entity.SysQiyeZhaopinExample" resultType="java.lang.Integer" >
+    select count(*) from sys_qiye_zhaopin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sys_qiye_zhaopin
+    <set >
+      <if test="record.zpid != null" >
+        zpid = #{record.zpid,jdbcType=INTEGER},
+      </if>
+      <if test="record.qyid != null" >
+        qyid = #{record.qyid,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salary != null" >
+        salary = #{record.salary,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workplace != null" >
+        workplace = #{record.workplace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publishtime != null" >
+        publishtime = #{record.publishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.workexperience != null" >
+        workexperience = #{record.workexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recruitnum != null" >
+        recruitnum = #{record.recruitnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobdescription != null" >
+        jobdescription = #{record.jobdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sys_qiye_zhaopin
+    set zpid = #{record.zpid,jdbcType=INTEGER},
+      qyid = #{record.qyid,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      salary = #{record.salary,jdbcType=VARCHAR},
+      workplace = #{record.workplace,jdbcType=VARCHAR},
+      publishtime = #{record.publishtime,jdbcType=TIMESTAMP},
+      workexperience = #{record.workexperience,jdbcType=VARCHAR},
+      recruitnum = #{record.recruitnum,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=VARCHAR},
+      jobdescription = #{record.jobdescription,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="university.employment.manager.entity.SysQiyeZhaopin" >
+    update sys_qiye_zhaopin
+    <set >
+      <if test="qyid != null" >
+        qyid = #{qyid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null" >
+        salary = #{salary,jdbcType=VARCHAR},
+      </if>
+      <if test="workplace != null" >
+        workplace = #{workplace,jdbcType=VARCHAR},
+      </if>
+      <if test="publishtime != null" >
+        publishtime = #{publishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workexperience != null" >
+        workexperience = #{workexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitnum != null" >
+        recruitnum = #{recruitnum,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="jobdescription != null" >
+        jobdescription = #{jobdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where zpid = #{zpid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="university.employment.manager.entity.SysQiyeZhaopin" >
+    update sys_qiye_zhaopin
+    set qyid = #{qyid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      salary = #{salary,jdbcType=VARCHAR},
+      workplace = #{workplace,jdbcType=VARCHAR},
+      publishtime = #{publishtime,jdbcType=TIMESTAMP},
+      workexperience = #{workexperience,jdbcType=VARCHAR},
+      recruitnum = #{recruitnum,jdbcType=INTEGER},
+      type = #{type,jdbcType=VARCHAR},
+      jobdescription = #{jobdescription,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where zpid = #{zpid,jdbcType=INTEGER}
+  </update>
+</mapper>
