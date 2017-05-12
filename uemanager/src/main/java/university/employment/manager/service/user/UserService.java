@@ -21,19 +21,9 @@ public interface UserService {
 	public Map<String,Object> userRegister(SysUserLogin userLogin);
 
 	
-	/**
-	 * 保存用户信息
-	 * @param stuInfo
-	 * @return
-	 */
-	public Map<String,Object> userSaveBaseInfo(SysStuInfo stuInfo);
+	
 
 
-	/**
-	 * 获取用户所有信息
-	 * @param uid
-	 * @return
-	 */
-	public Map<String, Object> getStuallData(Integer uid);
+	
 	
 }

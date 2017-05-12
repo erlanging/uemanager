@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	var uid = getCookie("uid");
 	  $.ajax({
-	    	url:"http://127.0.0.1:8080/uemanager/user/getstualldata.do",
+	    	url:"http://127.0.0.1:8080/uemanager/stu/getstualldata.do",
 	    	type: "post",
 			data:{"uid":uid
 				 },
@@ -10,7 +10,7 @@ $(document).ready(function(){
 				if(result["code"]=="success"){
 					var stuInfo = result["stuInfo"];
 					var chengjilist = result["chengjilist"]; 
-					
+					var name = getCookie("username");
 					if(stuInfo !="[]"){
 						$("#top_name").html(stuInfo["name"]);
 						$("#basic_name_input").val(stuInfo["name"]);
@@ -43,6 +43,8 @@ $(document).ready(function(){
 						$("#basic_lianxirenage_input").val(stuInfo["lianxirenage"]);
 						$("#save_stu_base_info").css("display","none");		
 						$(".stu_input").css("readonly","true").attr("disabled","disabled");
+					}else{
+						$("#top_name").html(name);
 					}
 					if(chengjilist != "[]"){
 						for(var p in chengjilist){
@@ -69,12 +71,7 @@ $(document).ready(function(){
 				alert("保存异常");
 			}
 		});
-	
-	
 }); 
-
-student_qiuzhi
-navi_qiuzhi
 function changenavi(str){
 	if(str=='navi_info'){
 		$("#navi_chengji").css("border","0px solid #fff");
@@ -324,7 +321,7 @@ function saveStubaseInfo1(){
 	stuInfo.lianxirenage=$("#basic_lianxirenage_input").val();
 	var stuInfoJson = JSON.stringify(stuInfo);
     $.ajax({
-    	url:"http://127.0.0.1:8080/uemanager/user/savebaseinfo.do",
+    	url:"http://127.0.0.1:8080/uemanager/stu/savebaseinfo.do",
     	type: "post",
 		data:{"stuInfo":stuInfoJson
 				/* "name":name,

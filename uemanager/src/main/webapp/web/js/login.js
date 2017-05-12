@@ -54,6 +54,8 @@ function login(){
 			if(result["code"]=="success"){
 				var data= result["data"];
 				setCookie("uid",data["uid"],0.1);
+				setCookie("username",data["username"],0.1);
+				
 //				var stuInfo = result["stuInfo"];
 //				var chengjilist = result["chengjilist"]; 
 //				setCookie("name",stuInfo["name"],0.1);

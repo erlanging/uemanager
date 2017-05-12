@@ -114,39 +114,4 @@ public class UserController extends BaseController{
 		result = userService.userRegister(user);
 		sendMessage(request, response, result);
 	}
-	
-	
-	@ResponseBody
-	@RequestMapping(value = "/savebaseinfo", method = {RequestMethod.POST,RequestMethod.GET })
-	public void saveBaseInfo(HttpServletRequest request,HttpServletResponse response){
-		// 设置编码格式
-		try {
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e) {
-			logger.debug("不支持转码");
-			return;
-		}
-		response.setContentType("text/html;charset=utf-8");
-		String stuInfojson = request.getParameter("stuInfo");
-		SysStuInfo stuInfo = JSON.parseObject(stuInfojson, SysStuInfo.class);
-		Map<String, Object> result = userService.userSaveBaseInfo(stuInfo);
-		sendMessage(request, response, result);
-	}
-	
-	
-	@ResponseBody
-	@RequestMapping(value = "/getstualldata", method = {RequestMethod.POST,RequestMethod.GET })
-	public void getStuallData(HttpServletRequest request,HttpServletResponse response){
-		// 设置编码格式
-		try {
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e) {
-			logger.debug("不支持转码");
-			return;
-		}
-		response.setContentType("text/html;charset=utf-8");
-		String uid = request.getParameter("uid");
-		Map<String, Object> result = userService.getStuallData(Integer.valueOf(uid));
-		sendMessage(request, response, result);
-	}
 }

@@ -30,12 +30,12 @@ import university.employment.manager.tool.constants.Constants;
 public class UserServiceImpl implements UserService{
 
 	@Autowired
-	private SysUserLoginMapper userLoginMapper;
-	@Autowired
 	private SysStuInfoMapper stuInfoMapper;
 	@Autowired
 	private SysStuChengjiMapper  stuChengjiMapper;
-	
+	@Autowired
+	private SysUserLoginMapper userLoginMapper;
+
 	/**
 	 * 用户登录接口
 	 */
@@ -53,7 +53,6 @@ public class UserServiceImpl implements UserService{
 			SysUserLogin user = userLoginlists.get(0);
 			String password = userLogin.getPassword();
 			password = Md5.getMd5(password);
-			
 			if(password.equalsIgnoreCase(user.getPassword())){
 				result.put(Constants.CODE, Constants.SUCCESS);
 				result.put(Constants.MSG, "登录成功！");
@@ -96,60 +95,5 @@ public class UserServiceImpl implements UserService{
 		return result;
 	}
 
-	/**
-	 * 保存用户信息
-	 */
-	@Override
-	public Map<String, Object> userSaveBaseInfo(SysStuInfo stuInfo) {
-		Map<String, Object> result = new HashMap<String,Object>();
-		int backstatus = stuInfoMapper.insertSelective(stuInfo);
-		if(backstatus > Constants.ZERO){
-			result.put(Constants.CODE, Constants.SUCCESS);
-			result.put(Constants.MSG, "保存成功！");
-			result.put(Constants.DATA, stuInfo);
-		}else{
-			result.put(Constants.CODE, Constants.FAIL);
-			result.put(Constants.MSG, "注册失败！");
-		}
-		return result;
-	}
-
-	/**
-	 * 获取用户全部信息
-	 */
-	@Override
-	public Map<String, Object> getStuallData(Integer uid) {
-		Map<String, Object> result = new HashMap<>();
-		SysUserLogin user = userLoginMapper.selectByPrimaryKey(uid);
-		//查询学生基本信息
-		SysStuInfoExample stuinfoexa =new SysStuInfoExample();
-		SysStuInfoExample.Criteria  stuinfoCri =  stuinfoexa.createCriteria();
-		stuinfoCri.andUidEqualTo(user.getUid());
-		List<SysStuInfo > stuinfolist = stuInfoMapper.selectByExample(stuinfoexa );
-		
-		if(stuinfolist !=null && !stuinfolist.isEmpty()){
-			result.put("stuInfo", stuinfolist.get(0));
-		}else{
-			result.put("stuInfo", "[]");
-		}
-		//查旬学生成绩信息
-		List<SysStuChengji> stuChengjiList = stuChengjiMapper.selectByUid(user.getUid());
-		
-		if(stuChengjiList!=null){
-			if(!stuChengjiList.isEmpty()){
-				result.put("chengjilist", stuChengjiList);
-			}else{
-				result.put("chengjilist", "[]");
-			}
-		}else{
-			result.put(Constants.CODE, Constants.FAIL);
-			return result;
-		}
-		
-		result.put(Constants.CODE, Constants.SUCCESS);
-		return result;
-	}
 	
-	
-
 }

@@ -51,7 +51,7 @@
 		<table tableName="sys_qiye_info"></table>
 		
 		<table tableName="sys_qiye_rencai"></table>
-		
+		<table tableName="sys_stu_chengji"></table>
 		<table tableName="sys_qiye_zhaopin"></table>
 		
 		<table tableName="sys_stu_dangan"></table>
@@ -61,7 +61,7 @@
 		<table tableName="sys_stu_qiuzhi"></table>
 		
 		<table tableName="sys_user_login"></table> -->
-		<table tableName="sys_stu_chengji"></table>
+		<table tableName="sys_stu_dangan"></table>
 		
 	</context>
 </generatorConfiguration>
