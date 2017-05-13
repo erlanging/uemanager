@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="university.employment.manager.dao.SysStuJianliMapper" >
+  <resultMap id="BaseResultMap" type="university.employment.manager.entity.SysStuJianli" >
+    <id column="homepage" property="homepage" jdbcType="VARCHAR" />
+    <id column="jlid" property="jlid" jdbcType="INTEGER" />
+    <result column="stuid" property="stuid" jdbcType="INTEGER" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="yingwenname" property="yingwenname" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+    <result column="mail" property="mail" jdbcType="VARCHAR" />
+    <result column="mibilephone" property="mibilephone" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="qiuzhiyixiang" property="qiuzhiyixiang" jdbcType="VARCHAR" />
+    <result column="jineng" property="jineng" jdbcType="VARCHAR" />
+    <result column="workexperience" property="workexperience" jdbcType="VARCHAR" />
+    <result column="awards" property="awards" jdbcType="VARCHAR" />
+    <result column="lastmodify" property="lastmodify" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    homepage, jlid, stuid, realname, yingwenname, birthday, mail, mibilephone, qq, qiuzhiyixiang, 
+    jineng, workexperience, awards, lastmodify
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="university.employment.manager.entity.SysStuJianliExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_stu_jianli
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="university.employment.manager.entity.SysStuJianliKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_stu_jianli
+    where homepage = #{homepage,jdbcType=VARCHAR}
+      and jlid = #{jlid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="university.employment.manager.entity.SysStuJianliKey" >
+    delete from sys_stu_jianli
+    where homepage = #{homepage,jdbcType=VARCHAR}
+      and jlid = #{jlid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="university.employment.manager.entity.SysStuJianliExample" >
+    delete from sys_stu_jianli
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="university.employment.manager.entity.SysStuJianli" >
+    insert into sys_stu_jianli (homepage, jlid, stuid, 
+      realname, yingwenname, birthday, 
+      mail, mibilephone, qq, 
+      qiuzhiyixiang, jineng, workexperience, 
+      awards, lastmodify)
+    values (#{homepage,jdbcType=VARCHAR}, #{jlid,jdbcType=INTEGER}, #{stuid,jdbcType=INTEGER}, 
+      #{realname,jdbcType=VARCHAR}, #{yingwenname,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, 
+      #{mail,jdbcType=VARCHAR}, #{mibilephone,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, 
+      #{qiuzhiyixiang,jdbcType=VARCHAR}, #{jineng,jdbcType=VARCHAR}, #{workexperience,jdbcType=VARCHAR}, 
+      #{awards,jdbcType=VARCHAR}, #{lastmodify,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="university.employment.manager.entity.SysStuJianli" >
+    insert into sys_stu_jianli
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="homepage != null" >
+        homepage,
+      </if>
+      <if test="jlid != null" >
+        jlid,
+      </if>
+      <if test="stuid != null" >
+        stuid,
+      </if>
+      <if test="realname != null" >
+        realname,
+      </if>
+      <if test="yingwenname != null" >
+        yingwenname,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="mail != null" >
+        mail,
+      </if>
+      <if test="mibilephone != null" >
+        mibilephone,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="qiuzhiyixiang != null" >
+        qiuzhiyixiang,
+      </if>
+      <if test="jineng != null" >
+        jineng,
+      </if>
+      <if test="workexperience != null" >
+        workexperience,
+      </if>
+      <if test="awards != null" >
+        awards,
+      </if>
+      <if test="lastmodify != null" >
+        lastmodify,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="homepage != null" >
+        #{homepage,jdbcType=VARCHAR},
+      </if>
+      <if test="jlid != null" >
+        #{jlid,jdbcType=INTEGER},
+      </if>
+      <if test="stuid != null" >
+        #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="yingwenname != null" >
+        #{yingwenname,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null" >
+        #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="mibilephone != null" >
+        #{mibilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="qiuzhiyixiang != null" >
+        #{qiuzhiyixiang,jdbcType=VARCHAR},
+      </if>
+      <if test="jineng != null" >
+        #{jineng,jdbcType=VARCHAR},
+      </if>
+      <if test="workexperience != null" >
+        #{workexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="awards != null" >
+        #{awards,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodify != null" >
+        #{lastmodify,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="university.employment.manager.entity.SysStuJianliExample" resultType="java.lang.Integer" >
+    select count(*) from sys_stu_jianli
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sys_stu_jianli
+    <set >
+      <if test="record.homepage != null" >
+        homepage = #{record.homepage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jlid != null" >
+        jlid = #{record.jlid,jdbcType=INTEGER},
+      </if>
+      <if test="record.stuid != null" >
+        stuid = #{record.stuid,jdbcType=INTEGER},
+      </if>
+      <if test="record.realname != null" >
+        realname = #{record.realname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yingwenname != null" >
+        yingwenname = #{record.yingwenname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthday != null" >
+        birthday = #{record.birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mail != null" >
+        mail = #{record.mail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mibilephone != null" >
+        mibilephone = #{record.mibilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qq != null" >
+        qq = #{record.qq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qiuzhiyixiang != null" >
+        qiuzhiyixiang = #{record.qiuzhiyixiang,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jineng != null" >
+        jineng = #{record.jineng,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workexperience != null" >
+        workexperience = #{record.workexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awards != null" >
+        awards = #{record.awards,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastmodify != null" >
+        lastmodify = #{record.lastmodify,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sys_stu_jianli
+    set homepage = #{record.homepage,jdbcType=VARCHAR},
+      jlid = #{record.jlid,jdbcType=INTEGER},
+      stuid = #{record.stuid,jdbcType=INTEGER},
+      realname = #{record.realname,jdbcType=VARCHAR},
+      yingwenname = #{record.yingwenname,jdbcType=VARCHAR},
+      birthday = #{record.birthday,jdbcType=VARCHAR},
+      mail = #{record.mail,jdbcType=VARCHAR},
+      mibilephone = #{record.mibilephone,jdbcType=VARCHAR},
+      qq = #{record.qq,jdbcType=VARCHAR},
+      qiuzhiyixiang = #{record.qiuzhiyixiang,jdbcType=VARCHAR},
+      jineng = #{record.jineng,jdbcType=VARCHAR},
+      workexperience = #{record.workexperience,jdbcType=VARCHAR},
+      awards = #{record.awards,jdbcType=VARCHAR},
+      lastmodify = #{record.lastmodify,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="university.employment.manager.entity.SysStuJianli" >
+    update sys_stu_jianli
+    <set >
+      <if test="stuid != null" >
+        stuid = #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="realname != null" >
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="yingwenname != null" >
+        yingwenname = #{yingwenname,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null" >
+        mail = #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="mibilephone != null" >
+        mibilephone = #{mibilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="qiuzhiyixiang != null" >
+        qiuzhiyixiang = #{qiuzhiyixiang,jdbcType=VARCHAR},
+      </if>
+      <if test="jineng != null" >
+        jineng = #{jineng,jdbcType=VARCHAR},
+      </if>
+      <if test="workexperience != null" >
+        workexperience = #{workexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="awards != null" >
+        awards = #{awards,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodify != null" >
+        lastmodify = #{lastmodify,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where homepage = #{homepage,jdbcType=VARCHAR}
+      and jlid = #{jlid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="university.employment.manager.entity.SysStuJianli" >
+    update sys_stu_jianli
+    set stuid = #{stuid,jdbcType=INTEGER},
+      realname = #{realname,jdbcType=VARCHAR},
+      yingwenname = #{yingwenname,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      mail = #{mail,jdbcType=VARCHAR},
+      mibilephone = #{mibilephone,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      qiuzhiyixiang = #{qiuzhiyixiang,jdbcType=VARCHAR},
+      jineng = #{jineng,jdbcType=VARCHAR},
+      workexperience = #{workexperience,jdbcType=VARCHAR},
+      awards = #{awards,jdbcType=VARCHAR},
+      lastmodify = #{lastmodify,jdbcType=VARCHAR}
+    where homepage = #{homepage,jdbcType=VARCHAR}
+      and jlid = #{jlid,jdbcType=INTEGER}
+  </update>
+</mapper>

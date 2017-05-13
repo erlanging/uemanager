@@ -272,7 +272,7 @@
 				</form>
 				<div class="settings-save" style="width: 100%; TEXT-ALIGN: center;">
 						<button  class="zg-btn-blue"
-							style="MARGIN-RIGHT: auto; MARGIN-LEFT: auto;" id="save_stu_base_info" onclick="saveStubaseInfo1();">保存</button>
+							style="MARGIN-RIGHT: auto; MARGIN-LEFT: auto;" id="save_stu_base_info" onclick="saveStubaseInfo();">保存</button>
 					</div>
 			</div>
 
@@ -322,42 +322,42 @@
 					<td class="tg-ry4d" rowspan="6">学<br> 生<br> 个<br>
 						人<br> 基<br> 本<br> 信<br> 息<br></td>
 					<td class="tg-tbo6">姓名</td>
-					<td class="tg-31tv" colspan="2"><input id="stu_da_name" value="" style="width: 80px; border: none;font-size: 14px;"></td>
+					<td class="tg-31tv" colspan="2"><input class="stu_dangan_input" id="stu_da_name" value="" style="width: 80px; border: none;font-size: 14px;"></td>
 					<td class="tg-8e09" colspan="2">民族</td>
-					<td class="tg-5rkw" colspan="2"><input id="stu_da_nation" value="" style="width: 80px; border: none;font-size: 14px;"></td>
+					<td class="tg-5rkw" colspan="2"><input class="stu_dangan_input" id="stu_da_nation" value="" style="width: 80px; border: none;font-size: 14px;"></td>
 					<td class="tg-66lu" colspan="5" rowspan="6"><br>
 					<br>
 					<br> 照片 <br></td>
 				</tr>
 				<tr>
 					<td class="tg-8e09">性别</td>
-					<td class="tg-25al" colspan="2"><input id="stu_da_gender" value="" style="width: 80px; border: none;font-size: 14px;"></td>
+					<td class="tg-25al" colspan="2"><input class="stu_dangan_input" id="stu_da_gender" value="" style="width: 80px; border: none;font-size: 14px;"></td>
 					<td class="tg-8e09" colspan="2">行政班级</td>
-					<td class="tg-3we0" colspan="2"><input id="stu_da_xingzhengbanji" value="" style="width: 80px; border: none;font-size: 14px;"></td>
+					<td class="tg-3we0" colspan="2"><input class="stu_dangan_input" id="stu_da_xingzhengbanji" value="" style="width: 80px; border: none;font-size: 14px;"></td>
 				</tr>
 				<tr>
 					<td class="tg-8e09">学号</td>
-					<td class="tg-25al" colspan="2"><input id="stu_da_studentid" value="" style="width: 80px; border: none;font-size: 14px;"></td>
+					<td class="tg-25al" colspan="2"><input class="stu_dangan_input" id="stu_da_studentid" value="" style="width: 80px; border: none;font-size: 14px;"></td>
 				<td class="tg-8e09" colspan="2">入团时间</td>
-				<td class="tg-3we0" colspan="2"><input id="stu_da_rutuandate" value="" style="width: 80px; border: none;font-size: 14px;"></td>
+				<td class="tg-3we0" colspan="2"><input class="stu_dangan_input" id="stu_da_rutuandate" value="" style="width: 80px; border: none;font-size: 14px;"></td>
 				</tr>
 				<tr>
 					<td class="tg-8e09">出生年月<br></td>
 					<td class="tg-25al" colspan="2"><input id="stu_da_birthday" value="" style="width: 80px; border: none;font-size: 14px;"></td>
 					<td class="tg-8e09" colspan="2">政治面貌<br></td>
-					<td class="tg-3we0" colspan="2"><input id="stu_da_zhengzhimianmao" value="" style="width: 80px; border: none;font-size: 14px;"></td>
+					<td class="tg-3we0" colspan="2"><input class="stu_dangan_input" id="stu_da_zhengzhimianmao" value="" style="width: 80px; border: none;font-size: 14px;"></td>
 				</tr>
 				<tr>
 					<td class="tg-8e09">身份证号</td>
 					<td class="tg-yw4l" colspan="2"><input id="stu_da_identityid" value="" style="width: 80px; border: none;font-size: 14px;"></td>
 					<td class="tg-8e09" colspan="2">籍贯</td>
-					<td class="tg-yw4l" colspan="2"><input id="stu_da_jiguan" value="" style="width: 80px; border: none;font-size: 14px;"></td>
+					<td class="tg-yw4l" colspan="2"><input class="stu_dangan_input" id="stu_da_jiguan" value="" style="width: 80px; border: none;font-size: 14px;"></td>
 				</tr>
 				<tr>
 					<td class="tg-8e09">联系电话<br></td>
 					<td class="tg-yw4l" colspan="2"><input id="stu_da_phone" value="" style="width: 80px; border: none;font-size: 14px;"></td>
 					<td class="tg-8e09" colspan="2">电子邮箱<br></td>
-					<td class="tg-yw4l" colspan="2"><input id="stu_da_mail" value="" style="width: 80px; border: none;font-size: 14px;"></td>
+					<td class="tg-yw4l" colspan="2"><input class="stu_dangan_input" id="stu_da_mail" value="" style="width: 80px; border: none;font-size: 14px;"></td>
 				</tr>
 				<tr>
 					<td class="tg-ry4d" rowspan="2">家庭<br>通讯<br>信息
@@ -365,146 +365,116 @@
 					<td class="tg-8e09">家庭<br>详细<br>地址
 					</td>
 					<td class="tg-yw4l" colspan="11">
-						<textarea id="stu_da_homeaddr" rows="" cols="" style="width: 100%; height: 80px;margin-top: 5px;"></textarea>
+						<textarea class="stu_dangan_input" id="stu_da_homeaddr" rows="" cols="" style="width: 100%; height: 80px;margin-top: 5px;"></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td class="tg-8e09">邮政编码</td>
 					<td class="tg-yw4l" colspan="2"><input id="stu_da_zipcode" value="" style="width: 80px; border: none;font-size: 14px;"></td>
 					<td class="tg-8e09" colspan="2">联系电话</td>
-					<td class="tg-yw4l" colspan="7"><input id="stu_da_contactphone" value="" style="width: 300px; border: none;font-size: 14px;"></td>
+					<td class="tg-yw4l" colspan="7"><input class="stu_dangan_input" id="stu_da_contactphone" value="" style="width: 300px; border: none;font-size: 14px;"></td>
 				</tr>
 				<tr>
-					<td class="tg-ry4d" rowspan="4">家庭<br>主要<br>关系
+					<td class="tg-ry4d" rowspan="2">家庭<br>主要<br>关系
 					</td>
-					<td class="tg-8e09">关系</td>
+					<td class="tg-8e09" colspan="1">关系</td>
 					<td class="tg-8e09" colspan="2">姓名</td>
-					<td class="tg-8e09" colspan="6">工作单位或联系地址</td>
-					<td class="tg-8e09" colspan="3">联系电话</td>
+					<td class="tg-8e09" colspan="5">工作单位或联系地址</td>
+					<td class="tg-8e09" colspan="4">联系电话</td>
 				</tr>
-				<tr>
-					<td class="tg-yw4l"><input id="stu_da_nation" value="" style="width: 80px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="2"><input id="stu_da_nation" value="" style="width: 80px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="6"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="3"><input id="stu_da_nation" value="" style="width: 80px; border: none;font-size: 14px;"></td>
-				</tr>
-				<tr>
-					<td class="tg-yw4l"><input id="stu_da_nation" value="" style="width: 80px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="2"><input id="stu_da_nation" value="" style="width: 80px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="6"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="3"><input id="stu_da_nation" value="" style="width: 80px; border: none;font-size: 14px;"></td>
-				</tr>
-				<tr>
-					<td class="tg-yw4l"><input id="stu_da_nation" value="" style="width: 80px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="2"><input id="stu_da_nation" value="" style="width: 80px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="6"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="3"><input id="stu_da_nation" value="" style="width: 80px; border: none;font-size: 14px;"></td>
+				<tr id="stu_guanxi">
+					<td colspan="12">
+						<textarea class="stu_dangan_input" id="stu_da_jianli" rows="" cols="" style="width: 100%;height: 240px;"></textarea>
+					</td>
 				</tr>
 				
+				
 				<tr>
-					<td class="tg-ry4d" rowspan="6">本人<br>简历<br>从小<br>学起<br>不要<br>间断<br></td>
+					<td class="tg-ry4d" rowspan="2">本人<br>简历<br>从小<br>学起<br>不要<br>间断<br></td>
 					<td class="tg-60tn" colspan="3">起止时间</td>
 					<td class="tg-60tn" colspan="6">学习（工作）单位</td>
 					<td class="tg-60tn" colspan="3">担任职务</td>
 				</tr>
+				
 				<tr>
-					<td class="tg-yw4l" colspan="3"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="6"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="3"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
+					<td class="tg-yw4l" colspan="12">						
+						<textarea class="stu_dangan_input" id="stu_da_jianli" rows="" cols="" style="width: 100%;height: 240px;"></textarea>
+					</td>				
 				</tr>
-				<tr>
-					<td class="tg-yw4l" colspan="3"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="6"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="3"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-				</tr>
-				<tr>
-					<td class="tg-yw4l" colspan="3"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="6"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="3"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-				</tr>
-				<tr>
-					<td class="tg-yw4l" colspan="3"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="6"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="3"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-				</tr>
-				<tr>
-					<td class="tg-yw4l" colspan="3"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="6"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-					<td class="tg-yw4l" colspan="3"><input id="stu_da_nation" value="" style="width: 220px; border: none;font-size: 14px;"></td>
-				</tr>
+
 				<tr>
 					<td class="tg-ry4d"><br>
 					<br>
 					<br>大学<br>以来<br>所获<br>奖励</td>
 					<td class="tg-yw4l" colspan="12">						
-						<textarea id="stu_da_awards" rows="" cols="" style="width: 100%;height: 240px;"></textarea>
+						<textarea class="stu_dangan_input" id="stu_da_awards" rows="" cols="" style="width: 100%;height: 240px;"></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td class="tg-ry4d">备注</td>
 					<td class="tg-yw4l" colspan="12">
-						<textarea rows="" cols="" style="width: 100%;"></textarea>
+						<textarea class="stu_dangan_input" id="stu_dangan_beizhu" rows="" cols="" style="width: 100%;"></textarea>
 					</td>
 				</tr>
 			</table>
 			<div class="settings-save" style="width: 100%; TEXT-ALIGN: center;">
-				<button type="submit" class="zg-btn-blue"
-					style="MARGIN-RIGHT: auto; MARGIN-LEFT: auto;">保存</button>
+				<button class="zg-btn-blue"
+					style="MARGIN-RIGHT: auto; MARGIN-LEFT: auto;" id="stu_dangan_save" onclick="savestudangan();">保存</button>
 			</div>
 		</div>
 
 
 		<div class="zu-main-content-inner" id="student_jianli" style="display: none;">
 			<div id="header">
-				<p id="title" id="stu_jl_name">王亮亮</p>
+				<p id="title" id="stu_jl_name">基本信息</p>
 			</div>
 			<div id="general">
 				<div class="row">
 				<label for="url_token" class="settings-item-title with-input">真实姓名:</label>
 				<div class="settings-item-content">
-					<input autocomplete="off" class="zg-form-text-input stu_input"
+					<input class="stu_jianli_input"  autocomplete="off" class="zg-form-text-input stu_input"
 						name="url_token" id="stu_jl_realname" value=""> 
 				</div>
 				<label for="url_token" class="settings-item-title with-input">英文名:</label>
 				<div class="settings-item-content">
-					<input autocomplete="off" class="zg-form-text-input stu_input"
+					<input  class="stu_jianli_input" autocomplete="off" class="zg-form-text-input stu_input"
 						name="url_token" id="stu_jl_yingwenname" value=""> 
 				</div>
 				<label for="url_token" class="settings-item-title with-input">生日:</label>
 				<div class="settings-item-content">
-					<input autocomplete="off" class="zg-form-text-input stu_input"
+					<input  class="stu_jianli_input" autocomplete="off" class="zg-form-text-input stu_input"
 						name="url_token" id="stu_jl_birthday" value=""> 
 				</div>
 				<label for="url_token" class="settings-item-title with-input">移动电话:</label>
 				<div class="settings-item-content">
-					<input autocomplete="off" class="zg-form-text-input stu_input"
+					<input  class="stu_jianli_input" autocomplete="off" class="zg-form-text-input stu_input"
 						name="url_token" id="stu_jl_mibilephone" value=""> 
 				</div>
 				<label for="url_token" class="settings-item-title with-input">电子邮件:</label>
 				<div class="settings-item-content">
-					<input autocomplete="off" class="zg-form-text-input stu_input"
+					<input  class="stu_jianli_input" autocomplete="off" class="zg-form-text-input stu_input"
 						name="url_token" id="stu_jl_mail" value=""> 
 				</div>
 				<label for="url_token" class="settings-item-title with-input">主页:</label>
 				<div class="settings-item-content">
-					<input autocomplete="off" class="zg-form-text-input stu_input"
+					<input class="stu_jianli_input"  autocomplete="off" class="zg-form-text-input stu_input"
 						name="url_token" id="stu_jl_homepage" value=""> 
 				</div>
 				<label for="url_token" class="settings-item-title with-input">QQ:</label>
 				<div class="settings-item-content">
-					<input autocomplete="off" class="zg-form-text-input stu_input"
+					<input class="stu_jianli_input"  autocomplete="off" class="zg-form-text-input stu_input"
 						name="url_token" id="stu_jl_qq" value=""> 
 				</div>
 			</div>
 
 			<div id="objective">
 				<h2>求职意向</h2>
-				<textarea id="stu_jl_qiuzhiyixiang" rows="" cols="" style="width: 88%;margin-left: 60px;border:1px solid #ccc;margin-top: 10px;">寻一份互联网相关专职工作.</textarea>
+				<textarea class="stu_jianli_input"  id="stu_jl_qiuzhiyixiang" rows="" cols="" style="width: 88%;margin-left: 60px;border:1px solid #ccc;margin-top: 10px;">寻一份互联网相关专职工作.</textarea>
 			</div>
 
 			<div id="skillareas">
 				<h2>技能</h2>
-				<textarea id="stu_jl_jineng" rows="" cols="" style="width: 88%;margin-left:60px;height: 160px;border:1px solid #ccc;margin-top: 10px;">精通XHTML,HTML,CSS, 能完全手工编写
+				<textarea class="stu_jianli_input"  id="stu_jl_jineng" rows="" cols="" style="width: 88%;margin-left:60px;height: 160px;border:1px solid #ccc;margin-top: 10px;">精通XHTML,HTML,CSS, 能完全手工编写
 能熟练地用各种软件生成HTML/XHTML
 熟悉标准, 能手工编写XHTML+CSS的标准网页
 熟悉Oracle等主流关系性数据库，熟练掌握SQL语言
@@ -515,7 +485,7 @@
 
 			<div id="history">
 				<h2>学历及工作经验</h2>
-				<textarea id="stu_jl_workexperience" rows="" cols="" style="width: 88%;margin-left:60px;height: 160px;border:1px solid #ccc;margin-top: 10px;">
+				<textarea  class="stu_jianli_input" id="stu_jl_workexperience" rows="" cols="" style="width: 88%;margin-left:60px;height: 160px;border:1px solid #ccc;margin-top: 10px;">
 2013-2017年    安徽工程大学    物联网工程
 2016-2017年    北京拓尔思信息股份有限公司
 2015-2016年    达内科技有限公司
@@ -524,7 +494,7 @@
 
 			<div id="awards">
 				<h2>所获奖项</h2>
-				<textarea id="stu_jl_awards" rows="" cols="" style="width: 88%;margin-left:60px;height: 160px;border:1px solid #ccc;margin-top: 10px;">
+				<textarea class="stu_jianli_input" id="stu_jl_awards" rows="" cols="" style="width: 88%;margin-left:60px;height: 160px;border:1px solid #ccc;margin-top: 10px;">
 经典论坛第一届样式表设计赛
 2016年9月13日
 蓝色理想 经典论坛
@@ -534,8 +504,8 @@
 			<div id="lastModified" id="last_modified">Last Modified: 2017年5月</div>
 			<div id="copyright">&copy; 2017 王亮亮</div>
 			<div class="settings-save" style="width: 100%; TEXT-ALIGN: center;">
-				<button type="submit" class="zg-btn-blue"
-					style="MARGIN-RIGHT: auto; MARGIN-LEFT: auto;">保存</button>
+				<button  class="zg-btn-blue"
+					style="MARGIN-RIGHT: auto; MARGIN-LEFT: auto;" onclick="savestujianli();" id="stu_jianli_save">保存</button>
 			</div>
 		</div>
 	</div>
@@ -560,7 +530,6 @@
 							<th width="140">发布企业</th>
 							<th width="130">发布时间</th>
 							<th width="100">是否过期</th>
-							<th width="100">操作</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -573,7 +542,7 @@
 							<td>2017-4-11 09:11:42</td>
 							<td class="td-status"><span
 								class="label label-success radius">正常</span></td>
-							<td class="td-manage"><a>编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;<a>删除</a></td>
+							
 						</tr>
 						<tr class="text-c">
 							<td><input type="checkbox" value="2" name=""></td>
@@ -583,7 +552,7 @@
 							<td>百度</td>
 							<td>2017-6-17 11:34:42</td>
 							<td class="td-status"><span class="label radius">正常</span></td>
-							<td class="td-manage"><a>编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;<a>删除</a></td>
+							
 						</tr>
 					</tbody>
 				</table>

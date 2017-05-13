@@ -1,5 +1,11 @@
 $(document).ready(function(){
 	var uid = getCookie("uid");
+	if(uid==""){
+		alert("请登录");
+		window.location.href="http://127.0.0.1:8080/uemanager/web/login.html";
+		return;
+	}
+	
 	  $.ajax({
 	    	url:"http://127.0.0.1:8080/uemanager/stu/getstualldata.do",
 	    	type: "post",
@@ -10,7 +16,50 @@ $(document).ready(function(){
 				if(result["code"]=="success"){
 					var stuInfo = result["stuInfo"];
 					var chengjilist = result["chengjilist"]; 
+					var dangan = result["stuDangan"];
+					var jianli =result["stuJianli"];
+					
 					var name = getCookie("username");
+					setCookie("stuid",stuInfo["stuid"]);
+					if(dangan != "[]"){
+						$("#stu_da_name").val(dangan["name"]);
+						$("#stu_da_gender").val(dangan["gender"]);
+						$("#stu_da_studentid").val(dangan["studentid"]);
+						$("#stu_da_xingzhengbanji").val(dangan["xingzhengbanji"]);
+						$("#stu_da_birthday").val(dangan["birthday"]);
+						$("#stu_da_nation").val(dangan["nation"]);
+						$("#stu_da_rutuandate").val(dangan["rutuandate"]);//证件类型
+						$("#stu_da_identityid").val(dangan["identityid"]);
+						$("#stu_da_zhengzhimianmao").val(dangan["zhengzhimianmao"]);//政治面貌
+						$("#stu_da_jiguan").val(dangan["jiguan"]);
+						$("#stu_da_phone").val(dangan["phone"]);
+						$("#stu_da_mail").val(dangan["mail"]);
+						$("#stu_da_homeaddr").html(dangan["homeaddr"]);
+						$("#stu_da_zipcode").val(dangan["zipcode"]);
+						$("#stu_da_contactphone").val(dangan["contactphone"]);
+						$("#stu_da_awards").html(dangan["awards"]);
+						$("#stu_dangan_beizhu").html(dangan["beizhu"]);
+						$("#stu_da_jianli").html(dangan["jianli"]);
+						$("#stu_dangan_save").css("display","none");		
+						$(".stu_dangan_input").css("readonly","true").attr("disabled","disabled");
+					}
+					
+					if(jianli != "[]"){
+						$("#stu_jl_realname").val(jianli["realname"]);
+						$("#stu_jl_yingwenname").val(jianli["yingwenname"]);
+						$("#stu_jl_birthday").val(jianli["birthday"]);
+						$("#stu_jl_mibilephone").val(jianli["mibilephone"]);
+						$("#stu_jl_mail").val(jianli["mail"]);
+						$("#stu_jl_homepage").val(jianli["homepage"]);
+						$("#stu_jl_qq").val(jianli["qq"]);//证件类型
+						$("#stu_jl_qiuzhiyixiang").html(jianli["qiuzhiyixiang"]);
+						$("#stu_jl_jineng").html(jianli["jineng"]);//政治面貌
+						$("#stu_jl_workexperience").html(jianli["workexperience"]);
+						$("#stu_jl_awards").html(jianli["awards"]);
+						$("#stu_jianli_save").css("display","none");		
+						$(".stu_jianli_input").css("readonly","true").attr("disabled","disabled");
+					}
+					
 					if(stuInfo !="[]"){
 						$("#top_name").html(stuInfo["name"]);
 						$("#basic_name_input").val(stuInfo["name"]);
@@ -46,6 +95,7 @@ $(document).ready(function(){
 					}else{
 						$("#top_name").html(name);
 					}
+					
 					if(chengjilist != "[]"){
 						for(var p in chengjilist){
 							var tr = "<tr>";
@@ -142,8 +192,262 @@ function changenavi(str){
 	}
 }
 
+function savestudangan(){
+	var name=$("#stu_da_name").val();
+	if(name == "undefine" ||name == ""){
+		alert("姓名不能为空！");
+		return;
+	}
+	var gender=$("#stu_da_gender").val();
+	if(gender == "undefine" ||gender == ""){
+		alert("性别不能为空！");
+		return;
+	}
+	var studentid=$("#stu_da_studentid").val();
+	if(studentid == "undefine" ||studentid == ""){
+		alert("学号不能为空！");
+		return;
+	}
+	var xingzhengbanji=$("#stu_da_xingzhengbanji").val();
+	if(xingzhengbanji == "undefine" ||xingzhengbanji == ""){
+		alert("行政班级不能为空！");
+		return;
+	}
+	var birthday=$("#stu_da_birthday").val();
+	if(birthday == "undefine" ||birthday == ""){
+		alert("生日不能为空！");
+		return;
+	}
+	var nation=$("#stu_da_nation").val();
+	if(nation == "undefine" ||nation == ""){
+		alert("民族不能为空！");
+		return;
+	}
+	var rutuandate=$("#stu_da_rutuandate").val();//证件类型
+	if(rutuandate == "undefine" ||rutuandate == ""){
+		alert("入团时间不能为空！");
+		return;
+	}
+	var identityid=$("#stu_da_identityid").val();
+	if(identityid == "undefine" ||identityid == ""){
+		alert("身份证号不能为空！");
+		return;
+	}
+	var zhengzhimianmao=$("#stu_da_zhengzhimianmao").val();//政治面貌
+	if(zhengzhimianmao == "undefine" ||zhengzhimianmao == ""){
+		alert("政治面貌不能为空！");
+		return;
+	}
+	var jiguan=$("#stu_da_jiguan").val();
+	if(jiguan == "undefine" ||jiguan == ""){
+		alert("籍贯不能为空！");
+		return;
+	}
+	var phone=$("#stu_da_phone").val();
+	if(phone == "undefine" ||phone == ""){
+		alert("手机不能为空！");
+		return;
+	}
+	var mail=$("#stu_da_mail").val();
+	if(mail == "undefine" ||mail == ""){
+		alert("电子邮箱不能为空！");
+		return;
+	}
+	var homeaddr=$("#stu_da_homeaddr").val();
+	if(homeaddr == "undefine" ||homeaddr == ""){
+		alert("家庭住址不能为空！");
+		return;
+	}
+	var zipcode=$("#stu_da_zipcode").val();
+	if(zipcode == "undefine" ||zipcode == ""){
+		alert("邮编不能为空！");
+		return;
+	}
+	var contactphone=$("#stu_da_contactphone").val();
+	if(contactphone == "undefine" ||contactphone == ""){
+		alert("联系电话不能为空！");
+		return;
+	}
+	
+	
+	var awards=$("#stu_da_awards").val();
+	
+	var beizhu=$("#stu_dangan_beizhu").val();
+	if(beizhu == "undefine" ||beizhu == ""){
+		alert("备注不能为空！");
+		return;
+	}
+	var jianli=$("#stu_da_jianli").val();
+	if(jianli == "undefine" ||jianli == ""){
+		alert("简历不能为空！");
+		return;
+	}
+	
+	var stuDangan=new Object(); 
+	if(getCookie("uid")==null){
+		alert("请登录");
+		window.location.href="http://127.0.0.1:8080/uemanager/web/login.html";
+		return;
+	}
+	
+	
+	stuDangan.stuid=getCookie("stuid");
+	stuDangan.name=$("#stu_da_name").val();
+	stuDangan.gender=$("#stu_da_gender").val();
+	stuDangan.studentid=$("#stu_da_studentid").val();
+	stuDangan.xingzhengbanji=$("#stu_da_xingzhengbanji").val();
+	stuDangan.birthday=$("#stu_da_birthday").val();
+	stuDangan.nation=$("#stu_da_nation").val();
+	stuDangan.rutuandate=$("#stu_da_rutuandate").val();//证件类型
+	stuDangan.identityid=$("#stu_da_identityid").val();
+	stuDangan.zhengzhimianmao=$("#stu_da_zhengzhimianmao").val();//政治面貌
+	stuDangan.jiguan=$("#stu_da_jiguan").val();
+	stuDangan.phone=$("#stu_da_phone").val();
+	stuDangan.mail=$("#stu_da_mail").val();
+	stuDangan.homeaddr=$("#stu_da_homeaddr").val();
+	stuDangan.zipcode=$("#stu_da_zipcode").val();
+	stuDangan.contactphone=$("#stu_da_contactphone").val();
+	stuDangan.awards=$("#stu_da_awards").val();
+	stuDangan.beizhu=$("#stu_dangan_beizhu").val();
+	stuDangan.jianli=$("#stu_da_jianli").val();
+	
+	var stuDanganJson = JSON.stringify(stuDangan);
+    $.ajax({
+    	url:"http://127.0.0.1:8080/uemanager/stu/savestudangan.do",
+    	type: "post",
+		data:{"stuDangan":stuDanganJson
+		 },
+		dataType: "json",
+		success:function(result){	
+			if(result["code"]=="success"){
+				var data= result["data"];
+				$("#stu_dangan_save").css("display","none");		
+				$(".stu_dangan_input").css("readonly","true").attr("disabled","disabled");
+				
+				alert(result["msg"]);
+			}else{
+				alert(result["msg"]);
+				
+			}
+			},
+		error:function(){
+			alert("保存异常");
+		}
+	});
 
-function saveStubaseInfo1(){
+}
+
+function savestujianli(){
+	var realname=$("#stu_jl_realname").val();
+	if(realname == "undefine" ||realname == ""){
+		alert("真实姓名不能为空！");
+		return;
+	}
+	var yingwenname=$("#stu_jl_yingwenname").val();
+	if(yingwenname == "undefine" ||yingwenname == ""){
+		alert("英文名不能为空！");
+		return;
+	}
+	var birthday=$("#stu_jl_birthday").val();
+	if(birthday == "undefine" ||birthday == ""){
+		alert("出生年月不能为空！");
+		return;
+	}
+	var mibilephone=$("#stu_jl_mibilephone").val();
+	if(mibilephone == "undefine" ||mibilephone == ""){
+		alert("移动电话不能为空！");
+		return;
+	}
+	var mail=$("#stu_jl_mail").val();
+	if(mail == "undefine" ||mail == ""){
+		alert("邮箱不能为空！");
+		return;
+	}
+	var homepage=$("#stu_jl_homepage").val();
+	
+	var qq=$("#stu_jl_qq").val();//证件类型
+	if(qq == "undefine" ||qq == ""){
+		alert("qq不能为空！");
+		return;
+	}
+	var qiuzhiyixiang=$("#stu_jl_qiuzhiyixiang").val();
+	if(qiuzhiyixiang == "undefine" ||qiuzhiyixiang == ""){
+		alert("求职意向不能为空！");
+		return;
+	}
+	var jineng=$("#stu_jl_jineng").val();//政治面貌
+	if(jineng == "undefine" ||jineng == ""){
+		alert("技能不能为空！");
+		return;
+	}
+	var workexperience=$("#stu_jl_workexperience").val();
+	if(workexperience == "undefine" ||workexperience == ""){
+		alert("工作经验不能为空！");
+		return;
+	}
+	var awards=$("#stu_jl_awards").val();
+	if(awards == "undefine" ||awards == ""){
+		alert("所获奖项不能为空！");
+		return;
+	}
+	
+	
+	var stuJianli=new Object(); 
+	if(getCookie("uid")==null){
+		alert("请登录");
+		window.location.href="http://127.0.0.1:8080/uemanager/web/login.html";
+		return;
+	}
+	
+	stuJianli.stuid=getCookie("stuid");
+	stuJianli.realname=$("#stu_jl_realname").val();
+	
+	stuJianli.yingwenname=$("#stu_jl_yingwenname").val();
+	
+	stuJianli.birthday=$("#stu_jl_birthday").val();
+	
+	stuJianli.mibilephone=$("#stu_jl_mibilephone").val();
+	
+	stuJianli.mail=$("#stu_jl_mail").val();
+	
+	stuJianli.homepage=$("#stu_jl_homepage").val();
+	
+	stuJianli.qq=$("#stu_jl_qq").val();//证件类型
+	
+	stuJianli.qiuzhiyixiang=$("#stu_jl_qiuzhiyixiang").val();
+	
+	stuJianli.jineng=$("#stu_jl_jineng").val();//政治面貌
+	
+	stuJianli.workexperience=$("#stu_jl_workexperience").val();
+	
+	stuJianli.awards=$("#stu_jl_awards").val();
+	
+	var stuJianliJson = JSON.stringify(stuJianli);
+    $.ajax({
+    	url:"http://127.0.0.1:8080/uemanager/stu/savestujianli.do",
+    	type: "post",
+		data:{"stuJianli":stuJianliJson
+		 },
+		dataType: "json",
+		success:function(result){	
+			if(result["code"]=="success"){
+				var data= result["data"];
+				$("#stu_jianli_save").css("display","none");		
+				$(".stu_jianli_input").css("readonly","true").attr("disabled","disabled");
+				alert(result["msg"]);
+			}else{
+				alert(result["msg"]);
+			}
+			},
+		error:function(){
+			alert("保存异常");
+		}
+	});
+}
+
+
+
+function saveStubaseInfo(){
 	var name=$("#basic_name_input").val();
 	if(name == "undefine" ||name == ""){
 		alert("姓名不能为空！");
