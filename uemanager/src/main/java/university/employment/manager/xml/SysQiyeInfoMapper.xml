@@ -5,7 +5,7 @@
     <id column="qyid" property="qyid" jdbcType="INTEGER" />
     <result column="uid" property="uid" jdbcType="INTEGER" />
     <result column="qyname" property="qyname" jdbcType="VARCHAR" />
-    <result column=" businessNo" property="businessno" jdbcType="VARCHAR" />
+    <result column=" businessno" property="businessno" jdbcType="VARCHAR" />
     <result column="nationaltaxregisnum" property="nationaltaxregisnum" jdbcType="VARCHAR" />
     <result column="localtaxregisnum" property="localtaxregisnum" jdbcType="VARCHAR" />
     <result column="bankname" property="bankname" jdbcType="VARCHAR" />
@@ -22,6 +22,9 @@
     <result column="numberoemployees" property="numberoemployees" jdbcType="INTEGER" />
     <result column="introduction" property="introduction" jdbcType="VARCHAR" />
     <result column="product" property="product" jdbcType="VARCHAR" />
+    <result column="lingdaotuandui" property="lingdaotuandui" jdbcType="VARCHAR" />
+    <result column="wenhua" property="wenhua" jdbcType="VARCHAR" />
+    <result column="jiancheng" property="jiancheng" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -82,9 +85,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    qyid, uid, qyname, " businessNo", nationaltaxregisnum, localtaxregisnum, bankname, 
+    qyid, uid, qyname, " businessno", nationaltaxregisnum, localtaxregisnum, bankname, 
     bankaccount, addr, legalrepresentative, legalphone, contactname, contactphone, fax, 
-    email, type, legalform, numberoemployees, introduction, product
+    email, type, legalform, numberoemployees, introduction, product, lingdaotuandui, 
+    wenhua, jiancheng
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="university.employment.manager.entity.SysQiyeInfoExample" >
     select
@@ -118,19 +122,21 @@
   </delete>
   <insert id="insert" parameterType="university.employment.manager.entity.SysQiyeInfo" >
     insert into sys_qiye_info (qyid, uid, qyname, 
-      " businessNo", nationaltaxregisnum, localtaxregisnum, 
+      " businessno", nationaltaxregisnum, localtaxregisnum, 
       bankname, bankaccount, addr, 
       legalrepresentative, legalphone, contactname, 
       contactphone, fax, email, 
       type, legalform, numberoemployees, 
-      introduction, product)
+      introduction, product, lingdaotuandui, 
+      wenhua, jiancheng)
     values (#{qyid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{qyname,jdbcType=VARCHAR}, 
       #{businessno,jdbcType=VARCHAR}, #{nationaltaxregisnum,jdbcType=VARCHAR}, #{localtaxregisnum,jdbcType=VARCHAR}, 
       #{bankname,jdbcType=VARCHAR}, #{bankaccount,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
       #{legalrepresentative,jdbcType=VARCHAR}, #{legalphone,jdbcType=VARCHAR}, #{contactname,jdbcType=VARCHAR}, 
       #{contactphone,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{type,jdbcType=VARCHAR}, #{legalform,jdbcType=VARCHAR}, #{numberoemployees,jdbcType=INTEGER}, 
-      #{introduction,jdbcType=VARCHAR}, #{product,jdbcType=VARCHAR})
+      #{introduction,jdbcType=VARCHAR}, #{product,jdbcType=VARCHAR}, #{lingdaotuandui,jdbcType=VARCHAR}, 
+      #{wenhua,jdbcType=VARCHAR}, #{jiancheng,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="university.employment.manager.entity.SysQiyeInfo" >
     insert into sys_qiye_info
@@ -145,7 +151,7 @@
         qyname,
       </if>
       <if test="businessno != null" >
-        " businessNo",
+         businessno,
       </if>
       <if test="nationaltaxregisnum != null" >
         nationaltaxregisnum,
@@ -194,6 +200,15 @@
       </if>
       <if test="product != null" >
         product,
+      </if>
+      <if test="lingdaotuandui != null" >
+        lingdaotuandui,
+      </if>
+      <if test="wenhua != null" >
+        wenhua,
+      </if>
+      <if test="jiancheng != null" >
+        jiancheng,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -257,6 +272,15 @@
       <if test="product != null" >
         #{product,jdbcType=VARCHAR},
       </if>
+      <if test="lingdaotuandui != null" >
+        #{lingdaotuandui,jdbcType=VARCHAR},
+      </if>
+      <if test="wenhua != null" >
+        #{wenhua,jdbcType=VARCHAR},
+      </if>
+      <if test="jiancheng != null" >
+        #{jiancheng,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="university.employment.manager.entity.SysQiyeInfoExample" resultType="java.lang.Integer" >
@@ -278,7 +302,7 @@
         qyname = #{record.qyname,jdbcType=VARCHAR},
       </if>
       <if test="record.businessno != null" >
-        " businessNo" = #{record.businessno,jdbcType=VARCHAR},
+        " businessno" = #{record.businessno,jdbcType=VARCHAR},
       </if>
       <if test="record.nationaltaxregisnum != null" >
         nationaltaxregisnum = #{record.nationaltaxregisnum,jdbcType=VARCHAR},
@@ -328,6 +352,15 @@
       <if test="record.product != null" >
         product = #{record.product,jdbcType=VARCHAR},
       </if>
+      <if test="record.lingdaotuandui != null" >
+        lingdaotuandui = #{record.lingdaotuandui,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wenhua != null" >
+        wenhua = #{record.wenhua,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jiancheng != null" >
+        jiancheng = #{record.jiancheng,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -338,7 +371,7 @@
     set qyid = #{record.qyid,jdbcType=INTEGER},
       uid = #{record.uid,jdbcType=INTEGER},
       qyname = #{record.qyname,jdbcType=VARCHAR},
-      " businessNo" = #{record.businessno,jdbcType=VARCHAR},
+      " businessno" = #{record.businessno,jdbcType=VARCHAR},
       nationaltaxregisnum = #{record.nationaltaxregisnum,jdbcType=VARCHAR},
       localtaxregisnum = #{record.localtaxregisnum,jdbcType=VARCHAR},
       bankname = #{record.bankname,jdbcType=VARCHAR},
@@ -354,7 +387,10 @@
       legalform = #{record.legalform,jdbcType=VARCHAR},
       numberoemployees = #{record.numberoemployees,jdbcType=INTEGER},
       introduction = #{record.introduction,jdbcType=VARCHAR},
-      product = #{record.product,jdbcType=VARCHAR}
+      product = #{record.product,jdbcType=VARCHAR},
+      lingdaotuandui = #{record.lingdaotuandui,jdbcType=VARCHAR},
+      wenhua = #{record.wenhua,jdbcType=VARCHAR},
+      jiancheng = #{record.jiancheng,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -369,7 +405,7 @@
         qyname = #{qyname,jdbcType=VARCHAR},
       </if>
       <if test="businessno != null" >
-        " businessNo" = #{businessno,jdbcType=VARCHAR},
+        " businessno" = #{businessno,jdbcType=VARCHAR},
       </if>
       <if test="nationaltaxregisnum != null" >
         nationaltaxregisnum = #{nationaltaxregisnum,jdbcType=VARCHAR},
@@ -419,6 +455,15 @@
       <if test="product != null" >
         product = #{product,jdbcType=VARCHAR},
       </if>
+      <if test="lingdaotuandui != null" >
+        lingdaotuandui = #{lingdaotuandui,jdbcType=VARCHAR},
+      </if>
+      <if test="wenhua != null" >
+        wenhua = #{wenhua,jdbcType=VARCHAR},
+      </if>
+      <if test="jiancheng != null" >
+        jiancheng = #{jiancheng,jdbcType=VARCHAR},
+      </if>
     </set>
     where qyid = #{qyid,jdbcType=INTEGER}
   </update>
@@ -426,7 +471,7 @@
     update sys_qiye_info
     set uid = #{uid,jdbcType=INTEGER},
       qyname = #{qyname,jdbcType=VARCHAR},
-      " businessNo" = #{businessno,jdbcType=VARCHAR},
+      " businessno" = #{businessno,jdbcType=VARCHAR},
       nationaltaxregisnum = #{nationaltaxregisnum,jdbcType=VARCHAR},
       localtaxregisnum = #{localtaxregisnum,jdbcType=VARCHAR},
       bankname = #{bankname,jdbcType=VARCHAR},
@@ -442,7 +487,10 @@
       legalform = #{legalform,jdbcType=VARCHAR},
       numberoemployees = #{numberoemployees,jdbcType=INTEGER},
       introduction = #{introduction,jdbcType=VARCHAR},
-      product = #{product,jdbcType=VARCHAR}
+      product = #{product,jdbcType=VARCHAR},
+      lingdaotuandui = #{lingdaotuandui,jdbcType=VARCHAR},
+      wenhua = #{wenhua,jdbcType=VARCHAR},
+      jiancheng = #{jiancheng,jdbcType=VARCHAR}
     where qyid = #{qyid,jdbcType=INTEGER}
   </update>
 </mapper>

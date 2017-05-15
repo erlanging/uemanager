@@ -1,6 +1,7 @@
 package university.employment.manager.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class SysQiyeRencai implements Serializable {
     private Integer rcid;
@@ -10,6 +11,8 @@ public class SysQiyeRencai implements Serializable {
     private Integer stuid;
 
     private Integer zpid;
+
+    private Date createtime;
 
     private static final long serialVersionUID = 1L;
 
@@ -45,6 +48,14 @@ public class SysQiyeRencai implements Serializable {
         this.zpid = zpid;
     }
 
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -60,7 +71,8 @@ public class SysQiyeRencai implements Serializable {
         return (this.getRcid() == null ? other.getRcid() == null : this.getRcid().equals(other.getRcid()))
             && (this.getQyid() == null ? other.getQyid() == null : this.getQyid().equals(other.getQyid()))
             && (this.getStuid() == null ? other.getStuid() == null : this.getStuid().equals(other.getStuid()))
-            && (this.getZpid() == null ? other.getZpid() == null : this.getZpid().equals(other.getZpid()));
+            && (this.getZpid() == null ? other.getZpid() == null : this.getZpid().equals(other.getZpid()))
+            && (this.getCreatetime() == null ? other.getCreatetime() == null : this.getCreatetime().equals(other.getCreatetime()));
     }
 
     @Override
@@ -71,6 +83,7 @@ public class SysQiyeRencai implements Serializable {
         result = prime * result + ((getQyid() == null) ? 0 : getQyid().hashCode());
         result = prime * result + ((getStuid() == null) ? 0 : getStuid().hashCode());
         result = prime * result + ((getZpid() == null) ? 0 : getZpid().hashCode());
+        result = prime * result + ((getCreatetime() == null) ? 0 : getCreatetime().hashCode());
         return result;
     }
 }

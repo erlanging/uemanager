@@ -5,8 +5,12 @@ $(document).ready(function(){
 		window.location.href="http://127.0.0.1:8080/uemanager/web/login.html";
 		return;
 	}
+	var name = getCookie("username");
+	if(name!=null && name !=""){
+		$("#top_name").html(name);		
+	}
 	
-	  $.ajax({
+	 $.ajax({
 	    	url:"http://127.0.0.1:8080/uemanager/stu/getstualldata.do",
 	    	type: "post",
 			data:{"uid":uid
@@ -19,10 +23,11 @@ $(document).ready(function(){
 					var dangan = result["stuDangan"];
 					var jianli =result["stuJianli"];
 					
-					var name = getCookie("username");
+					
 					setCookie("stuid",stuInfo["stuid"]);
 					if(dangan != "[]"){
 						$("#stu_da_name").val(dangan["name"]);
+						
 						$("#stu_da_gender").val(dangan["gender"]);
 						$("#stu_da_studentid").val(dangan["studentid"]);
 						$("#stu_da_xingzhengbanji").val(dangan["xingzhengbanji"]);
@@ -39,7 +44,8 @@ $(document).ready(function(){
 						$("#stu_da_contactphone").val(dangan["contactphone"]);
 						$("#stu_da_awards").html(dangan["awards"]);
 						$("#stu_dangan_beizhu").html(dangan["beizhu"]);
-						$("#stu_da_jianli").html(dangan["jianli"]);
+						$("#stu_da_jianli").html(dangan["xuexijingli"]);
+						$("#stu_da_guanxi").html(dangan["guanxi"]);
 						$("#stu_dangan_save").css("display","none");		
 						$(".stu_dangan_input").css("readonly","true").attr("disabled","disabled");
 					}
@@ -118,7 +124,7 @@ $(document).ready(function(){
 				}
 				},
 			error:function(){
-				alert("保存异常");
+//				alert("保存异常");
 			}
 		});
 }); 
@@ -277,12 +283,16 @@ function savestudangan(){
 		alert("备注不能为空！");
 		return;
 	}
-	var jianli=$("#stu_da_jianli").val();
-	if(jianli == "undefine" ||jianli == ""){
+	var xuexijingli=$("#stu_da_jianli").val();
+	if(xuexijingli == "undefine" ||xuexijingli == ""){
 		alert("简历不能为空！");
 		return;
 	}
-	
+	var guanxi=$("#stu_da_guanxi").val();
+	if(guanxi == "undefine" ||guanxi == ""){
+		alert("家庭关系不能为空！");
+		return;
+	}
 	var stuDangan=new Object(); 
 	if(getCookie("uid")==null){
 		alert("请登录");
@@ -309,7 +319,8 @@ function savestudangan(){
 	stuDangan.contactphone=$("#stu_da_contactphone").val();
 	stuDangan.awards=$("#stu_da_awards").val();
 	stuDangan.beizhu=$("#stu_dangan_beizhu").val();
-	stuDangan.jianli=$("#stu_da_jianli").val();
+	stuDangan.xuexijingli=$("#stu_da_jianli").val();
+	stuDangan.guanxi=$("#stu_da_guanxi").val();
 	
 	var stuDanganJson = JSON.stringify(stuDangan);
     $.ajax({
@@ -331,7 +342,7 @@ function savestudangan(){
 			}
 			},
 		error:function(){
-			alert("保存异常");
+//			alert("保存异常");
 		}
 	});
 
@@ -440,7 +451,7 @@ function savestujianli(){
 			}
 			},
 		error:function(){
-			alert("保存异常");
+//			alert("保存异常");
 		}
 	});
 }
@@ -628,34 +639,6 @@ function saveStubaseInfo(){
     	url:"http://127.0.0.1:8080/uemanager/stu/savebaseinfo.do",
     	type: "post",
 		data:{"stuInfo":stuInfoJson
-				/* "name":name,
-				"gender":gender,
-				"birthdate":birthdate,
-				"birthplace":birthplace,
-				"nativeplace":nativeplace,
-				"nation":nation,
-				"identityCardType":identityCardType,
-				"identityId":identityId,
-				"politicsStatus":politicsStatus,
-				"healthcondition":healthcondition,
-				"hukouxingzhi":hukouxingzhi,
-				"hukousuozaidi":hukousuozaidi,
-				"addr":addr,
-				"zipcode":zipcode,
-				"email":email,
-				"qq":qq,
-				"connectphone":connectphone,
-				"studyid":studyid,
-				"zhuanye":zhuanye,
-				"techang":techang,
-				"suozaibanji":suozaibanji,
-				"susheId":susheId,
-				"zhiwu":zhiwu,
-				"dushengzinv":dushengzinv,
-				"lianxirenname":lianxirenname,
-				"lianxirenphone":lianxirenphone,
-				"lianxirendanwei":lianxirendanwei,
-				"lianxirenage":lianxirenage */
 			 },
 		dataType: "json",
 		success:function(result){	
@@ -671,7 +654,7 @@ function saveStubaseInfo(){
 			}
 			},
 		error:function(){
-			alert("保存异常");
+//			alert("保存异常");
 		}
 	});
 

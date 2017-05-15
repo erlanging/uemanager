@@ -43,6 +43,12 @@ public class SysQiyeInfo implements Serializable {
 
     private String product;
 
+    private String lingdaotuandui;
+
+    private String wenhua;
+
+    private String jiancheng;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getQyid() {
@@ -205,6 +211,30 @@ public class SysQiyeInfo implements Serializable {
         this.product = product == null ? null : product.trim();
     }
 
+    public String getLingdaotuandui() {
+        return lingdaotuandui;
+    }
+
+    public void setLingdaotuandui(String lingdaotuandui) {
+        this.lingdaotuandui = lingdaotuandui == null ? null : lingdaotuandui.trim();
+    }
+
+    public String getWenhua() {
+        return wenhua;
+    }
+
+    public void setWenhua(String wenhua) {
+        this.wenhua = wenhua == null ? null : wenhua.trim();
+    }
+
+    public String getJiancheng() {
+        return jiancheng;
+    }
+
+    public void setJiancheng(String jiancheng) {
+        this.jiancheng = jiancheng == null ? null : jiancheng.trim();
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -236,7 +266,10 @@ public class SysQiyeInfo implements Serializable {
             && (this.getLegalform() == null ? other.getLegalform() == null : this.getLegalform().equals(other.getLegalform()))
             && (this.getNumberoemployees() == null ? other.getNumberoemployees() == null : this.getNumberoemployees().equals(other.getNumberoemployees()))
             && (this.getIntroduction() == null ? other.getIntroduction() == null : this.getIntroduction().equals(other.getIntroduction()))
-            && (this.getProduct() == null ? other.getProduct() == null : this.getProduct().equals(other.getProduct()));
+            && (this.getProduct() == null ? other.getProduct() == null : this.getProduct().equals(other.getProduct()))
+            && (this.getLingdaotuandui() == null ? other.getLingdaotuandui() == null : this.getLingdaotuandui().equals(other.getLingdaotuandui()))
+            && (this.getWenhua() == null ? other.getWenhua() == null : this.getWenhua().equals(other.getWenhua()))
+            && (this.getJiancheng() == null ? other.getJiancheng() == null : this.getJiancheng().equals(other.getJiancheng()));
     }
 
     @Override
@@ -263,6 +296,9 @@ public class SysQiyeInfo implements Serializable {
         result = prime * result + ((getNumberoemployees() == null) ? 0 : getNumberoemployees().hashCode());
         result = prime * result + ((getIntroduction() == null) ? 0 : getIntroduction().hashCode());
         result = prime * result + ((getProduct() == null) ? 0 : getProduct().hashCode());
+        result = prime * result + ((getLingdaotuandui() == null) ? 0 : getLingdaotuandui().hashCode());
+        result = prime * result + ((getWenhua() == null) ? 0 : getWenhua().hashCode());
+        result = prime * result + ((getJiancheng() == null) ? 0 : getJiancheng().hashCode());
         return result;
     }
 }

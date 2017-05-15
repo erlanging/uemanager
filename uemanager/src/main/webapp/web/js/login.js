@@ -55,44 +55,6 @@ function login(){
 				var data= result["data"];
 				setCookie("uid",data["uid"],0.1);
 				setCookie("username",data["username"],0.1);
-				
-//				var stuInfo = result["stuInfo"];
-//				var chengjilist = result["chengjilist"]; 
-//				setCookie("name",stuInfo["name"],0.1);
-//				setCookie("stuid",stuInfo["stuid"],0.1);
-//				setCookie("uid",stuInfo["uid"],0.1);
-//				setCookie("gender",stuInfo["gender"],0.1);
-//				setCookie("birthdate",stuInfo["birthdate"],0.1);
-//				setCookie("birthplace",stuInfo["birthplace"],0.1);
-//				setCookie("nativeplace",stuInfo["nativeplace"],0.1);
-//				setCookie("nation",stuInfo["nation"],0.1);
-//				setCookie("studyid",stuInfo["studyid"],0.1);
-//				setCookie("identityid",stuInfo["identityid"],0.1);
-//				setCookie("identitycardtype",stuInfo["identitycardtype"],0.1);
-//				setCookie("politicsstatus",stuInfo["politicsstatus"],0.1);
-//				setCookie("healthcondition",stuInfo["healthcondition"],0.1);
-//				setCookie("hukouxingzhi",stuInfo["hukouxingzhi"],0.1);
-//				setCookie("techang",stuInfo["techang"],0.1);
-//				setCookie("addr",stuInfo["addr"],0.1);
-//				setCookie("email",stuInfo["email"],0.1);
-//				setCookie("zipcode",stuInfo["zipcode"],0.1);
-//				setCookie("suozaibanji",stuInfo["suozaibanji"],0.1);
-//				setCookie("zhuanye",stuInfo["zhuanye"],0.1);
-//				setCookie("susheid",stuInfo["susheid"],0.1);
-//				setCookie("zhiwu",stuInfo["zhiwu"],0.1);
-//				setCookie("dushengzinv",stuInfo["dushengzinv"],0.1);
-//				setCookie("lianxirenname",stuInfo["lianxirenname"],0.1);
-//				setCookie("lianxirenage",stuInfo["lianxirenage"],0.1);
-//				setCookie("lianxirenphone",stuInfo["lianxirenphone"],0.1);
-//				setCookie("qq",stuInfo["qq"],0.1);
-//				setCookie("connectphone",stuInfo["connectphone"],0.1);
-//				setCookie("lianxirendanwei",stuInfo["lianxirendanwei"],0.1);
-//				
-//				
-//				for(var p in chengjilist){//遍历json数组时，这么写p为索引，0,1
-//					alert(chengjilist[p].chjid);
-//				}
-//				setCookie("chengjilist",chengjilist,0.1);
 				if(data["type"]==0){
 					window.location.href="http://127.0.0.1:8080/uemanager/web/student.html";
 				}else if(data["type"]==1){

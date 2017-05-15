@@ -295,72 +295,72 @@ public class SysQiyeInfoExample {
         }
 
         public Criteria andBusinessnoIsNull() {
-            addCriterion("\" businessNo\" is null");
+            addCriterion("\" businessno\" is null");
             return (Criteria) this;
         }
 
         public Criteria andBusinessnoIsNotNull() {
-            addCriterion("\" businessNo\" is not null");
+            addCriterion("\" businessno\" is not null");
             return (Criteria) this;
         }
 
         public Criteria andBusinessnoEqualTo(String value) {
-            addCriterion("\" businessNo\" =", value, "businessno");
+            addCriterion("\" businessno\" =", value, "businessno");
             return (Criteria) this;
         }
 
         public Criteria andBusinessnoNotEqualTo(String value) {
-            addCriterion("\" businessNo\" <>", value, "businessno");
+            addCriterion("\" businessno\" <>", value, "businessno");
             return (Criteria) this;
         }
 
         public Criteria andBusinessnoGreaterThan(String value) {
-            addCriterion("\" businessNo\" >", value, "businessno");
+            addCriterion("\" businessno\" >", value, "businessno");
             return (Criteria) this;
         }
 
         public Criteria andBusinessnoGreaterThanOrEqualTo(String value) {
-            addCriterion("\" businessNo\" >=", value, "businessno");
+            addCriterion("\" businessno\" >=", value, "businessno");
             return (Criteria) this;
         }
 
         public Criteria andBusinessnoLessThan(String value) {
-            addCriterion("\" businessNo\" <", value, "businessno");
+            addCriterion("\" businessno\" <", value, "businessno");
             return (Criteria) this;
         }
 
         public Criteria andBusinessnoLessThanOrEqualTo(String value) {
-            addCriterion("\" businessNo\" <=", value, "businessno");
+            addCriterion("\" businessno\" <=", value, "businessno");
             return (Criteria) this;
         }
 
         public Criteria andBusinessnoLike(String value) {
-            addCriterion("\" businessNo\" like", value, "businessno");
+            addCriterion("\" businessno\" like", value, "businessno");
             return (Criteria) this;
         }
 
         public Criteria andBusinessnoNotLike(String value) {
-            addCriterion("\" businessNo\" not like", value, "businessno");
+            addCriterion("\" businessno\" not like", value, "businessno");
             return (Criteria) this;
         }
 
         public Criteria andBusinessnoIn(List<String> values) {
-            addCriterion("\" businessNo\" in", values, "businessno");
+            addCriterion("\" businessno\" in", values, "businessno");
             return (Criteria) this;
         }
 
         public Criteria andBusinessnoNotIn(List<String> values) {
-            addCriterion("\" businessNo\" not in", values, "businessno");
+            addCriterion("\" businessno\" not in", values, "businessno");
             return (Criteria) this;
         }
 
         public Criteria andBusinessnoBetween(String value1, String value2) {
-            addCriterion("\" businessNo\" between", value1, value2, "businessno");
+            addCriterion("\" businessno\" between", value1, value2, "businessno");
             return (Criteria) this;
         }
 
         public Criteria andBusinessnoNotBetween(String value1, String value2) {
-            addCriterion("\" businessNo\" not between", value1, value2, "businessno");
+            addCriterion("\" businessno\" not between", value1, value2, "businessno");
             return (Criteria) this;
         }
 
@@ -1471,6 +1471,216 @@ public class SysQiyeInfoExample {
 
         public Criteria andProductNotBetween(String value1, String value2) {
             addCriterion("product not between", value1, value2, "product");
+            return (Criteria) this;
+        }
+
+        public Criteria andLingdaotuanduiIsNull() {
+            addCriterion("lingdaotuandui is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLingdaotuanduiIsNotNull() {
+            addCriterion("lingdaotuandui is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLingdaotuanduiEqualTo(String value) {
+            addCriterion("lingdaotuandui =", value, "lingdaotuandui");
+            return (Criteria) this;
+        }
+
+        public Criteria andLingdaotuanduiNotEqualTo(String value) {
+            addCriterion("lingdaotuandui <>", value, "lingdaotuandui");
+            return (Criteria) this;
+        }
+
+        public Criteria andLingdaotuanduiGreaterThan(String value) {
+            addCriterion("lingdaotuandui >", value, "lingdaotuandui");
+            return (Criteria) this;
+        }
+
+        public Criteria andLingdaotuanduiGreaterThanOrEqualTo(String value) {
+            addCriterion("lingdaotuandui >=", value, "lingdaotuandui");
+            return (Criteria) this;
+        }
+
+        public Criteria andLingdaotuanduiLessThan(String value) {
+            addCriterion("lingdaotuandui <", value, "lingdaotuandui");
+            return (Criteria) this;
+        }
+
+        public Criteria andLingdaotuanduiLessThanOrEqualTo(String value) {
+            addCriterion("lingdaotuandui <=", value, "lingdaotuandui");
+            return (Criteria) this;
+        }
+
+        public Criteria andLingdaotuanduiLike(String value) {
+            addCriterion("lingdaotuandui like", value, "lingdaotuandui");
+            return (Criteria) this;
+        }
+
+        public Criteria andLingdaotuanduiNotLike(String value) {
+            addCriterion("lingdaotuandui not like", value, "lingdaotuandui");
+            return (Criteria) this;
+        }
+
+        public Criteria andLingdaotuanduiIn(List<String> values) {
+            addCriterion("lingdaotuandui in", values, "lingdaotuandui");
+            return (Criteria) this;
+        }
+
+        public Criteria andLingdaotuanduiNotIn(List<String> values) {
+            addCriterion("lingdaotuandui not in", values, "lingdaotuandui");
+            return (Criteria) this;
+        }
+
+        public Criteria andLingdaotuanduiBetween(String value1, String value2) {
+            addCriterion("lingdaotuandui between", value1, value2, "lingdaotuandui");
+            return (Criteria) this;
+        }
+
+        public Criteria andLingdaotuanduiNotBetween(String value1, String value2) {
+            addCriterion("lingdaotuandui not between", value1, value2, "lingdaotuandui");
+            return (Criteria) this;
+        }
+
+        public Criteria andWenhuaIsNull() {
+            addCriterion("wenhua is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWenhuaIsNotNull() {
+            addCriterion("wenhua is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWenhuaEqualTo(String value) {
+            addCriterion("wenhua =", value, "wenhua");
+            return (Criteria) this;
+        }
+
+        public Criteria andWenhuaNotEqualTo(String value) {
+            addCriterion("wenhua <>", value, "wenhua");
+            return (Criteria) this;
+        }
+
+        public Criteria andWenhuaGreaterThan(String value) {
+            addCriterion("wenhua >", value, "wenhua");
+            return (Criteria) this;
+        }
+
+        public Criteria andWenhuaGreaterThanOrEqualTo(String value) {
+            addCriterion("wenhua >=", value, "wenhua");
+            return (Criteria) this;
+        }
+
+        public Criteria andWenhuaLessThan(String value) {
+            addCriterion("wenhua <", value, "wenhua");
+            return (Criteria) this;
+        }
+
+        public Criteria andWenhuaLessThanOrEqualTo(String value) {
+            addCriterion("wenhua <=", value, "wenhua");
+            return (Criteria) this;
+        }
+
+        public Criteria andWenhuaLike(String value) {
+            addCriterion("wenhua like", value, "wenhua");
+            return (Criteria) this;
+        }
+
+        public Criteria andWenhuaNotLike(String value) {
+            addCriterion("wenhua not like", value, "wenhua");
+            return (Criteria) this;
+        }
+
+        public Criteria andWenhuaIn(List<String> values) {
+            addCriterion("wenhua in", values, "wenhua");
+            return (Criteria) this;
+        }
+
+        public Criteria andWenhuaNotIn(List<String> values) {
+            addCriterion("wenhua not in", values, "wenhua");
+            return (Criteria) this;
+        }
+
+        public Criteria andWenhuaBetween(String value1, String value2) {
+            addCriterion("wenhua between", value1, value2, "wenhua");
+            return (Criteria) this;
+        }
+
+        public Criteria andWenhuaNotBetween(String value1, String value2) {
+            addCriterion("wenhua not between", value1, value2, "wenhua");
+            return (Criteria) this;
+        }
+
+        public Criteria andJianchengIsNull() {
+            addCriterion("jiancheng is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJianchengIsNotNull() {
+            addCriterion("jiancheng is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJianchengEqualTo(String value) {
+            addCriterion("jiancheng =", value, "jiancheng");
+            return (Criteria) this;
+        }
+
+        public Criteria andJianchengNotEqualTo(String value) {
+            addCriterion("jiancheng <>", value, "jiancheng");
+            return (Criteria) this;
+        }
+
+        public Criteria andJianchengGreaterThan(String value) {
+            addCriterion("jiancheng >", value, "jiancheng");
+            return (Criteria) this;
+        }
+
+        public Criteria andJianchengGreaterThanOrEqualTo(String value) {
+            addCriterion("jiancheng >=", value, "jiancheng");
+            return (Criteria) this;
+        }
+
+        public Criteria andJianchengLessThan(String value) {
+            addCriterion("jiancheng <", value, "jiancheng");
+            return (Criteria) this;
+        }
+
+        public Criteria andJianchengLessThanOrEqualTo(String value) {
+            addCriterion("jiancheng <=", value, "jiancheng");
+            return (Criteria) this;
+        }
+
+        public Criteria andJianchengLike(String value) {
+            addCriterion("jiancheng like", value, "jiancheng");
+            return (Criteria) this;
+        }
+
+        public Criteria andJianchengNotLike(String value) {
+            addCriterion("jiancheng not like", value, "jiancheng");
+            return (Criteria) this;
+        }
+
+        public Criteria andJianchengIn(List<String> values) {
+            addCriterion("jiancheng in", values, "jiancheng");
+            return (Criteria) this;
+        }
+
+        public Criteria andJianchengNotIn(List<String> values) {
+            addCriterion("jiancheng not in", values, "jiancheng");
+            return (Criteria) this;
+        }
+
+        public Criteria andJianchengBetween(String value1, String value2) {
+            addCriterion("jiancheng between", value1, value2, "jiancheng");
+            return (Criteria) this;
+        }
+
+        public Criteria andJianchengNotBetween(String value1, String value2) {
+            addCriterion("jiancheng not between", value1, value2, "jiancheng");
             return (Criteria) this;
         }
     }

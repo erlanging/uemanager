@@ -295,6 +295,76 @@ public class SysQiyeZhaopinExample {
             return (Criteria) this;
         }
 
+        public Criteria andXueliIsNull() {
+            addCriterion("xueli is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andXueliIsNotNull() {
+            addCriterion("xueli is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andXueliEqualTo(String value) {
+            addCriterion("xueli =", value, "xueli");
+            return (Criteria) this;
+        }
+
+        public Criteria andXueliNotEqualTo(String value) {
+            addCriterion("xueli <>", value, "xueli");
+            return (Criteria) this;
+        }
+
+        public Criteria andXueliGreaterThan(String value) {
+            addCriterion("xueli >", value, "xueli");
+            return (Criteria) this;
+        }
+
+        public Criteria andXueliGreaterThanOrEqualTo(String value) {
+            addCriterion("xueli >=", value, "xueli");
+            return (Criteria) this;
+        }
+
+        public Criteria andXueliLessThan(String value) {
+            addCriterion("xueli <", value, "xueli");
+            return (Criteria) this;
+        }
+
+        public Criteria andXueliLessThanOrEqualTo(String value) {
+            addCriterion("xueli <=", value, "xueli");
+            return (Criteria) this;
+        }
+
+        public Criteria andXueliLike(String value) {
+            addCriterion("xueli like", value, "xueli");
+            return (Criteria) this;
+        }
+
+        public Criteria andXueliNotLike(String value) {
+            addCriterion("xueli not like", value, "xueli");
+            return (Criteria) this;
+        }
+
+        public Criteria andXueliIn(List<String> values) {
+            addCriterion("xueli in", values, "xueli");
+            return (Criteria) this;
+        }
+
+        public Criteria andXueliNotIn(List<String> values) {
+            addCriterion("xueli not in", values, "xueli");
+            return (Criteria) this;
+        }
+
+        public Criteria andXueliBetween(String value1, String value2) {
+            addCriterion("xueli between", value1, value2, "xueli");
+            return (Criteria) this;
+        }
+
+        public Criteria andXueliNotBetween(String value1, String value2) {
+            addCriterion("xueli not between", value1, value2, "xueli");
+            return (Criteria) this;
+        }
+
         public Criteria andSalaryIsNull() {
             addCriterion("salary is null");
             return (Criteria) this;
@@ -822,6 +892,216 @@ public class SysQiyeZhaopinExample {
 
         public Criteria andStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("status not between", value1, value2, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweizhizeIsNull() {
+            addCriterion("gangweizhize is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweizhizeIsNotNull() {
+            addCriterion("gangweizhize is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweizhizeEqualTo(String value) {
+            addCriterion("gangweizhize =", value, "gangweizhize");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweizhizeNotEqualTo(String value) {
+            addCriterion("gangweizhize <>", value, "gangweizhize");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweizhizeGreaterThan(String value) {
+            addCriterion("gangweizhize >", value, "gangweizhize");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweizhizeGreaterThanOrEqualTo(String value) {
+            addCriterion("gangweizhize >=", value, "gangweizhize");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweizhizeLessThan(String value) {
+            addCriterion("gangweizhize <", value, "gangweizhize");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweizhizeLessThanOrEqualTo(String value) {
+            addCriterion("gangweizhize <=", value, "gangweizhize");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweizhizeLike(String value) {
+            addCriterion("gangweizhize like", value, "gangweizhize");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweizhizeNotLike(String value) {
+            addCriterion("gangweizhize not like", value, "gangweizhize");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweizhizeIn(List<String> values) {
+            addCriterion("gangweizhize in", values, "gangweizhize");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweizhizeNotIn(List<String> values) {
+            addCriterion("gangweizhize not in", values, "gangweizhize");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweizhizeBetween(String value1, String value2) {
+            addCriterion("gangweizhize between", value1, value2, "gangweizhize");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweizhizeNotBetween(String value1, String value2) {
+            addCriterion("gangweizhize not between", value1, value2, "gangweizhize");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweiyaoqiuIsNull() {
+            addCriterion("gangweiyaoqiu is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweiyaoqiuIsNotNull() {
+            addCriterion("gangweiyaoqiu is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweiyaoqiuEqualTo(String value) {
+            addCriterion("gangweiyaoqiu =", value, "gangweiyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweiyaoqiuNotEqualTo(String value) {
+            addCriterion("gangweiyaoqiu <>", value, "gangweiyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweiyaoqiuGreaterThan(String value) {
+            addCriterion("gangweiyaoqiu >", value, "gangweiyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweiyaoqiuGreaterThanOrEqualTo(String value) {
+            addCriterion("gangweiyaoqiu >=", value, "gangweiyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweiyaoqiuLessThan(String value) {
+            addCriterion("gangweiyaoqiu <", value, "gangweiyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweiyaoqiuLessThanOrEqualTo(String value) {
+            addCriterion("gangweiyaoqiu <=", value, "gangweiyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweiyaoqiuLike(String value) {
+            addCriterion("gangweiyaoqiu like", value, "gangweiyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweiyaoqiuNotLike(String value) {
+            addCriterion("gangweiyaoqiu not like", value, "gangweiyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweiyaoqiuIn(List<String> values) {
+            addCriterion("gangweiyaoqiu in", values, "gangweiyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweiyaoqiuNotIn(List<String> values) {
+            addCriterion("gangweiyaoqiu not in", values, "gangweiyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweiyaoqiuBetween(String value1, String value2) {
+            addCriterion("gangweiyaoqiu between", value1, value2, "gangweiyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andGangweiyaoqiuNotBetween(String value1, String value2) {
+            addCriterion("gangweiyaoqiu not between", value1, value2, "gangweiyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andJinengyaoqiuIsNull() {
+            addCriterion("jinengyaoqiu is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJinengyaoqiuIsNotNull() {
+            addCriterion("jinengyaoqiu is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJinengyaoqiuEqualTo(String value) {
+            addCriterion("jinengyaoqiu =", value, "jinengyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andJinengyaoqiuNotEqualTo(String value) {
+            addCriterion("jinengyaoqiu <>", value, "jinengyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andJinengyaoqiuGreaterThan(String value) {
+            addCriterion("jinengyaoqiu >", value, "jinengyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andJinengyaoqiuGreaterThanOrEqualTo(String value) {
+            addCriterion("jinengyaoqiu >=", value, "jinengyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andJinengyaoqiuLessThan(String value) {
+            addCriterion("jinengyaoqiu <", value, "jinengyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andJinengyaoqiuLessThanOrEqualTo(String value) {
+            addCriterion("jinengyaoqiu <=", value, "jinengyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andJinengyaoqiuLike(String value) {
+            addCriterion("jinengyaoqiu like", value, "jinengyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andJinengyaoqiuNotLike(String value) {
+            addCriterion("jinengyaoqiu not like", value, "jinengyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andJinengyaoqiuIn(List<String> values) {
+            addCriterion("jinengyaoqiu in", values, "jinengyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andJinengyaoqiuNotIn(List<String> values) {
+            addCriterion("jinengyaoqiu not in", values, "jinengyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andJinengyaoqiuBetween(String value1, String value2) {
+            addCriterion("jinengyaoqiu between", value1, value2, "jinengyaoqiu");
+            return (Criteria) this;
+        }
+
+        public Criteria andJinengyaoqiuNotBetween(String value1, String value2) {
+            addCriterion("jinengyaoqiu not between", value1, value2, "jinengyaoqiu");
             return (Criteria) this;
         }
     }

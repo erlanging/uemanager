@@ -6,6 +6,7 @@
     <result column="qyid" property="qyid" jdbcType="INTEGER" />
     <result column="stuid" property="stuid" jdbcType="INTEGER" />
     <result column="zpid" property="zpid" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    rcid, qyid, stuid, zpid
+    rcid, qyid, stuid, zpid, createtime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="university.employment.manager.entity.SysQiyeRencaiExample" >
     select
@@ -100,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="university.employment.manager.entity.SysQiyeRencai" >
     insert into sys_qiye_rencai (rcid, qyid, stuid, 
-      zpid)
+      zpid, createtime)
     values (#{rcid,jdbcType=INTEGER}, #{qyid,jdbcType=INTEGER}, #{stuid,jdbcType=INTEGER}, 
-      #{zpid,jdbcType=INTEGER})
+      #{zpid,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="university.employment.manager.entity.SysQiyeRencai" >
     insert into sys_qiye_rencai
@@ -119,6 +120,9 @@
       <if test="zpid != null" >
         zpid,
       </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="rcid != null" >
@@ -132,6 +136,9 @@
       </if>
       <if test="zpid != null" >
         #{zpid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -156,6 +163,9 @@
       <if test="record.zpid != null" >
         zpid = #{record.zpid,jdbcType=INTEGER},
       </if>
+      <if test="record.createtime != null" >
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +176,8 @@
     set rcid = #{record.rcid,jdbcType=INTEGER},
       qyid = #{record.qyid,jdbcType=INTEGER},
       stuid = #{record.stuid,jdbcType=INTEGER},
-      zpid = #{record.zpid,jdbcType=INTEGER}
+      zpid = #{record.zpid,jdbcType=INTEGER},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,6 +194,9 @@
       <if test="zpid != null" >
         zpid = #{zpid,jdbcType=INTEGER},
       </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where rcid = #{rcid,jdbcType=INTEGER}
   </update>
@@ -190,7 +204,8 @@
     update sys_qiye_rencai
     set qyid = #{qyid,jdbcType=INTEGER},
       stuid = #{stuid,jdbcType=INTEGER},
-      zpid = #{zpid,jdbcType=INTEGER}
+      zpid = #{zpid,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP}
     where rcid = #{rcid,jdbcType=INTEGER}
   </update>
 </mapper>

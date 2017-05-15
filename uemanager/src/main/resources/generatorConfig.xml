@@ -61,7 +61,7 @@
 		<table tableName="sys_stu_qiuzhi"></table>
 		
 		<table tableName="sys_user_login"></table> -->
-		<table tableName="sys_stu_dangan"></table>
-		
+		<table tableName="sys_qiye_info"></table>
+	
 	</context>
 </generatorConfiguration>

@@ -5,6 +5,7 @@
     <id column="zpid" property="zpid" jdbcType="INTEGER" />
     <result column="qyid" property="qyid" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="xueli" property="xueli" jdbcType="VARCHAR" />
     <result column="salary" property="salary" jdbcType="VARCHAR" />
     <result column="workplace" property="workplace" jdbcType="VARCHAR" />
     <result column="publishtime" property="publishtime" jdbcType="TIMESTAMP" />
@@ -13,6 +14,9 @@
     <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="jobdescription" property="jobdescription" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="gangweizhize" property="gangweizhize" jdbcType="VARCHAR" />
+    <result column="gangweiyaoqiu" property="gangweiyaoqiu" jdbcType="VARCHAR" />
+    <result column="jinengyaoqiu" property="jinengyaoqiu" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -73,8 +77,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    zpid, qyid, name, salary, workplace, publishtime, workexperience, recruitnum, type, 
-    jobdescription, status
+    zpid, qyid, name, xueli, salary, workplace, publishtime, workexperience, recruitnum, 
+    type, jobdescription, status, gangweizhize, gangweiyaoqiu, jinengyaoqiu
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="university.employment.manager.entity.SysQiyeZhaopinExample" >
     select
@@ -108,13 +112,17 @@
   </delete>
   <insert id="insert" parameterType="university.employment.manager.entity.SysQiyeZhaopin" >
     insert into sys_qiye_zhaopin (zpid, qyid, name, 
-      salary, workplace, publishtime, 
-      workexperience, recruitnum, type, 
-      jobdescription, status)
+      xueli, salary, workplace, 
+      publishtime, workexperience, recruitnum, 
+      type, jobdescription, status, 
+      gangweizhize, gangweiyaoqiu, jinengyaoqiu
+      )
     values (#{zpid,jdbcType=INTEGER}, #{qyid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{salary,jdbcType=VARCHAR}, #{workplace,jdbcType=VARCHAR}, #{publishtime,jdbcType=TIMESTAMP}, 
-      #{workexperience,jdbcType=VARCHAR}, #{recruitnum,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, 
-      #{jobdescription,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
+      #{xueli,jdbcType=VARCHAR}, #{salary,jdbcType=VARCHAR}, #{workplace,jdbcType=VARCHAR}, 
+      #{publishtime,jdbcType=TIMESTAMP}, #{workexperience,jdbcType=VARCHAR}, #{recruitnum,jdbcType=INTEGER}, 
+      #{type,jdbcType=VARCHAR}, #{jobdescription,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{gangweizhize,jdbcType=VARCHAR}, #{gangweiyaoqiu,jdbcType=VARCHAR}, #{jinengyaoqiu,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="university.employment.manager.entity.SysQiyeZhaopin" >
     insert into sys_qiye_zhaopin
@@ -127,6 +135,9 @@
       </if>
       <if test="name != null" >
         name,
+      </if>
+      <if test="xueli != null" >
+        xueli,
       </if>
       <if test="salary != null" >
         salary,
@@ -152,6 +163,15 @@
       <if test="status != null" >
         status,
       </if>
+      <if test="gangweizhize != null" >
+        gangweizhize,
+      </if>
+      <if test="gangweiyaoqiu != null" >
+        gangweiyaoqiu,
+      </if>
+      <if test="jinengyaoqiu != null" >
+        jinengyaoqiu,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="zpid != null" >
@@ -162,6 +182,9 @@
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="xueli != null" >
+        #{xueli,jdbcType=VARCHAR},
       </if>
       <if test="salary != null" >
         #{salary,jdbcType=VARCHAR},
@@ -187,6 +210,15 @@
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
       </if>
+      <if test="gangweizhize != null" >
+        #{gangweizhize,jdbcType=VARCHAR},
+      </if>
+      <if test="gangweiyaoqiu != null" >
+        #{gangweiyaoqiu,jdbcType=VARCHAR},
+      </if>
+      <if test="jinengyaoqiu != null" >
+        #{jinengyaoqiu,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="university.employment.manager.entity.SysQiyeZhaopinExample" resultType="java.lang.Integer" >
@@ -206,6 +238,9 @@
       </if>
       <if test="record.name != null" >
         name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xueli != null" >
+        xueli = #{record.xueli,jdbcType=VARCHAR},
       </if>
       <if test="record.salary != null" >
         salary = #{record.salary,jdbcType=VARCHAR},
@@ -231,6 +266,15 @@
       <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
       </if>
+      <if test="record.gangweizhize != null" >
+        gangweizhize = #{record.gangweizhize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gangweiyaoqiu != null" >
+        gangweiyaoqiu = #{record.gangweiyaoqiu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jinengyaoqiu != null" >
+        jinengyaoqiu = #{record.jinengyaoqiu,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -241,6 +285,7 @@
     set zpid = #{record.zpid,jdbcType=INTEGER},
       qyid = #{record.qyid,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
+      xueli = #{record.xueli,jdbcType=VARCHAR},
       salary = #{record.salary,jdbcType=VARCHAR},
       workplace = #{record.workplace,jdbcType=VARCHAR},
       publishtime = #{record.publishtime,jdbcType=TIMESTAMP},
@@ -248,7 +293,10 @@
       recruitnum = #{record.recruitnum,jdbcType=INTEGER},
       type = #{record.type,jdbcType=VARCHAR},
       jobdescription = #{record.jobdescription,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=INTEGER}
+      status = #{record.status,jdbcType=INTEGER},
+      gangweizhize = #{record.gangweizhize,jdbcType=VARCHAR},
+      gangweiyaoqiu = #{record.gangweiyaoqiu,jdbcType=VARCHAR},
+      jinengyaoqiu = #{record.jinengyaoqiu,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -261,6 +309,9 @@
       </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="xueli != null" >
+        xueli = #{xueli,jdbcType=VARCHAR},
       </if>
       <if test="salary != null" >
         salary = #{salary,jdbcType=VARCHAR},
@@ -286,6 +337,15 @@
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
+      <if test="gangweizhize != null" >
+        gangweizhize = #{gangweizhize,jdbcType=VARCHAR},
+      </if>
+      <if test="gangweiyaoqiu != null" >
+        gangweiyaoqiu = #{gangweiyaoqiu,jdbcType=VARCHAR},
+      </if>
+      <if test="jinengyaoqiu != null" >
+        jinengyaoqiu = #{jinengyaoqiu,jdbcType=VARCHAR},
+      </if>
     </set>
     where zpid = #{zpid,jdbcType=INTEGER}
   </update>
@@ -293,6 +353,7 @@
     update sys_qiye_zhaopin
     set qyid = #{qyid,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
+      xueli = #{xueli,jdbcType=VARCHAR},
       salary = #{salary,jdbcType=VARCHAR},
       workplace = #{workplace,jdbcType=VARCHAR},
       publishtime = #{publishtime,jdbcType=TIMESTAMP},
@@ -300,7 +361,10 @@
       recruitnum = #{recruitnum,jdbcType=INTEGER},
       type = #{type,jdbcType=VARCHAR},
       jobdescription = #{jobdescription,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER}
+      status = #{status,jdbcType=INTEGER},
+      gangweizhize = #{gangweizhize,jdbcType=VARCHAR},
+      gangweiyaoqiu = #{gangweiyaoqiu,jdbcType=VARCHAR},
+      jinengyaoqiu = #{jinengyaoqiu,jdbcType=VARCHAR}
     where zpid = #{zpid,jdbcType=INTEGER}
   </update>
 </mapper>

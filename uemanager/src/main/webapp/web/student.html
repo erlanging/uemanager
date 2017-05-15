@@ -19,7 +19,12 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/student.js"></script>
 <title>学生用户</title>
-
+<style type="text/css">
+.settings-item-title{
+ margin-top:0px;
+ margin-bottom:4px;
+}
+</style>
 </head>
 
 <body class="zhi">
@@ -384,7 +389,7 @@
 				</tr>
 				<tr id="stu_guanxi">
 					<td colspan="12">
-						<textarea class="stu_dangan_input" id="stu_da_jianli" rows="" cols="" style="width: 100%;height: 240px;"></textarea>
+						<textarea class="stu_dangan_input" id="stu_da_guanxi" rows="" cols="" style="width: 100%;height: 240px;"></textarea>
 					</td>
 				</tr>
 				
@@ -428,38 +433,50 @@
 			<div id="header">
 				<p id="title" id="stu_jl_name">基本信息</p>
 			</div>
-			<div id="general">
-				<div class="row">
+		<div id="general">
+			<div class="row">
 				<label for="url_token" class="settings-item-title with-input">真实姓名:</label>
 				<div class="settings-item-content">
 					<input class="stu_jianli_input"  autocomplete="off" class="zg-form-text-input stu_input"
 						name="url_token" id="stu_jl_realname" value=""> 
 				</div>
+			</div>
+			<div class="row">
 				<label for="url_token" class="settings-item-title with-input">英文名:</label>
 				<div class="settings-item-content">
 					<input  class="stu_jianli_input" autocomplete="off" class="zg-form-text-input stu_input"
 						name="url_token" id="stu_jl_yingwenname" value=""> 
 				</div>
+			</div>
+			<div class="row">
 				<label for="url_token" class="settings-item-title with-input">生日:</label>
 				<div class="settings-item-content">
 					<input  class="stu_jianli_input" autocomplete="off" class="zg-form-text-input stu_input"
 						name="url_token" id="stu_jl_birthday" value=""> 
 				</div>
+			</div>
+			<div class="row">
 				<label for="url_token" class="settings-item-title with-input">移动电话:</label>
 				<div class="settings-item-content">
 					<input  class="stu_jianli_input" autocomplete="off" class="zg-form-text-input stu_input"
 						name="url_token" id="stu_jl_mibilephone" value=""> 
 				</div>
+			</div>
+			<div class="row">
 				<label for="url_token" class="settings-item-title with-input">电子邮件:</label>
 				<div class="settings-item-content">
 					<input  class="stu_jianli_input" autocomplete="off" class="zg-form-text-input stu_input"
 						name="url_token" id="stu_jl_mail" value=""> 
 				</div>
+			</div>
+			<div class="row">
 				<label for="url_token" class="settings-item-title with-input">主页:</label>
 				<div class="settings-item-content">
 					<input class="stu_jianli_input"  autocomplete="off" class="zg-form-text-input stu_input"
 						name="url_token" id="stu_jl_homepage" value=""> 
 				</div>
+			</div>
+			<div class="row">
 				<label for="url_token" class="settings-item-title with-input">QQ:</label>
 				<div class="settings-item-content">
 					<input class="stu_jianli_input"  autocomplete="off" class="zg-form-text-input stu_input"
@@ -530,6 +547,7 @@
 							<th width="140">发布企业</th>
 							<th width="130">发布时间</th>
 							<th width="100">是否过期</th>
+							<th width="100">是否关注</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -542,7 +560,7 @@
 							<td>2017-4-11 09:11:42</td>
 							<td class="td-status"><span
 								class="label label-success radius">正常</span></td>
-							
+							<td class="td-manage"><a>已关注</a></td>
 						</tr>
 						<tr class="text-c">
 							<td><input type="checkbox" value="2" name=""></td>
@@ -552,7 +570,7 @@
 							<td>百度</td>
 							<td>2017-6-17 11:34:42</td>
 							<td class="td-status"><span class="label radius">正常</span></td>
-							
+							<td class="td-manage"><a>已关注</a></td>
 						</tr>
 					</tbody>
 				</table>
