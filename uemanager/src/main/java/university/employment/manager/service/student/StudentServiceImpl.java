@@ -7,11 +7,14 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import university.employment.manager.dao.SysQiyeZhaopinMapper;
 import university.employment.manager.dao.SysStuChengjiMapper;
 import university.employment.manager.dao.SysStuDanganMapper;
 import university.employment.manager.dao.SysStuInfoMapper;
 import university.employment.manager.dao.SysStuJianliMapper;
 import university.employment.manager.dao.SysUserLoginMapper;
+import university.employment.manager.entity.SysQiyeZhaopin;
+import university.employment.manager.entity.SysQiyeZhaopinExample;
 import university.employment.manager.entity.SysStuChengji;
 import university.employment.manager.entity.SysStuDangan;
 import university.employment.manager.entity.SysStuDanganExample;
@@ -34,6 +37,8 @@ public class StudentServiceImpl implements StudentService{
 	private SysStuDanganMapper stuDanganMapper;
 	@Autowired
 	private SysStuJianliMapper stuJianliMapper;
+	@Autowired
+	private SysQiyeZhaopinMapper cpZhaopinMapper;
 	/**
 	 * 获取用户全部信息
 	 */
@@ -58,13 +63,17 @@ public class StudentServiceImpl implements StudentService{
 		if(stuChengjiList!=null){
 			if(!stuChengjiList.isEmpty()){
 				result.put("chengjilist", stuChengjiList);
+				result.put(Constants.CODE, Constants.SUCCESS);
 			}else{
+				result.put(Constants.CODE, Constants.SUCCESS);
 				result.put("chengjilist", "[]");
 			}
 		}else{
 			result.put(Constants.CODE, Constants.FAIL);
 			return result;
 		}
+		if(stuinfolist.size()>Constants.ZERO){
+		
 		//查询学生简历
 		SysStuJianliExample exaJianli = new SysStuJianliExample();
 		SysStuJianliExample.Criteria criJianli = exaJianli.createCriteria();
@@ -84,6 +93,7 @@ public class StudentServiceImpl implements StudentService{
 		}else{
 			result.put("stuDangan", "[]");
 		}
+	}
 		result.put(Constants.CODE, Constants.SUCCESS);
 		return result;
 	}
@@ -139,6 +149,27 @@ public class StudentServiceImpl implements StudentService{
 			result.put(Constants.MSG, "保存失败！");
 		}
 		return result;
+	}
+
+	@Override
+	public Map<String, Object> searchJob(String job) {
+		Map<String, Object> result = new HashMap<>();
+		
+		SysQiyeZhaopinExample zhaopinexa = new SysQiyeZhaopinExample();
+		zhaopinexa.createCriteria().andNameLike(job);
+		List<SysQiyeZhaopin> zhaopinlist =cpZhaopinMapper.selectByExample(zhaopinexa );
+		if(zhaopinlist!=null){
+			if(zhaopinlist.size()>Constants.ZERO){
+				result.put(Constants.DATA, zhaopinlist);
+				result.put(Constants.CODE, Constants.SUCCESS);
+			}else{
+				result.put(Constants.DATA, "[]");
+				result.put(Constants.CODE, Constants.SUCCESS);
+			}
+		}else{
+			result.put(Constants.CODE, Constants.FAIL);
+		}
+		return result ;
 	}
 
 	

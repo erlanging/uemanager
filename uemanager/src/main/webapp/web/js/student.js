@@ -661,6 +661,41 @@ function saveStubaseInfo(){
 }
 
 
+function search_zhaopin(){
+	var job = $("#stu_serach_job").val();
+    $.ajax({
+    	url:"http://127.0.0.1:8080/uemanager/stu/searchjob.do",
+    	type: "post",
+		data:{"job":job
+			 },
+		dataType: "json",
+		success:function(result){	
+			if(result["code"]=="success"){
+				var data= result["data"];
+				if(data!="[]"){
+					for(var p in data){
+						var tr ="<tr class='text-c'>";
+						tr+="<td><input type='checkbox'></td>";
+						tr+="<td >"+p+"<br></td>";
+						tr+="<td>"+data[p].name+"</td>";
+						tr+="<td>"+data[p].xueli+"</td>";
+						tr+="<td>"+data[p].workplace+"</td>";
+						tr+="<td>"+data[p].publishtime+"</td>";
+						tr+="<td>"+data[p].gangweizhize+"</td>";
+						tr+="<td>"+data[p].gangweiyaoqiu+"</td>";
+						tr+="<td>"+data[p].jinengyaoqiu+"</td></tr>";
+						$("#stu_search_job_table").append(tr);
+					}
+				}
+			}else{
+				alert("系统繁忙，稍后重试");
+			}
+			},
+		error:function(){
+		}
+	});
+
+}
 
 function setCookie(cname, cvalue, exdays) {
 	var d = new Date();

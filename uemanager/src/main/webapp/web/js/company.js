@@ -31,6 +31,7 @@ $(document).ready(function(){
 						$(".cp_zhaopin_input").css("readonly","true").attr("disabled","disabled");
 					}
 					if(cpzhaopin !="[]"){
+						
 						$("#cp_info_qyname").val(cpInfo["qyname"]);
 						$("#cp_info_jiancheng").val(cpInfo["jiancheng"]);
 						$("#cp_info_addr").val(cpInfo["addr"]);
@@ -41,7 +42,8 @@ $(document).ready(function(){
 						$("#cp_info_product").html(cpInfo["product"]);
 						$("#cp_info_lingdaotuandui").html(cpInfo["lingdaotuandui"]);
 						$("#cp_info_wenhua").html(cpInfo["wenhua"]);
-						$("#cp_info_save").css("display","none");		
+						$("#cp_info_save").css("display","none");	
+						$("#cp_zhaopin_title").css("readonly","true").attr("disabled","disabled");
 						$(".cp_base_info").css("readonly","true").attr("disabled","disabled");
 					}
 					
@@ -206,6 +208,11 @@ function savecpinfo(){
 
 
 function savecpzhaopin(){
+	var zhaopinname=$("#cp_zhaopin_title").val();
+	if(zhaopinname == "undefine" ||zhaopinname == ""){
+		alert("招聘标题不能为空！");
+		return;
+	}
 	var workplace=$("#cp_zhaopin_workplace").val();
 	if(workplace == "undefine" ||workplace == ""){
 		alert("工作地点不能为空！");
@@ -249,7 +256,7 @@ function savecpzhaopin(){
 	}
 	
 	var cpzhaopin=new Object(); 
-	
+	cpzhaopin.name =$("#cp_zhaopin_title").val();
 	cpzhaopin.workplace=$("#cp_zhaopin_workplace").val();
 	
 	cpzhaopin.workexperience=$("#cp_zhaopin_workexperience").val();
@@ -297,6 +304,53 @@ function savecpzhaopin(){
 	});
 
 }
+
+function cp_search_stu(){
+	var stuname = $("#cp_search_stuname").val();
+	var stuzhuanye = $("#cp_search_zhuanye").val();
+    $.ajax({
+    	url:"http://127.0.0.1:8080/uemanager/cp/getstudents.do",
+    	type: "post",
+		data:{"stuname":stuname,
+			"stuzhuanye":stuzhuanye
+		 },
+		dataType: "json",
+		success:function(result){	
+			if(result["code"]=="success"){
+				var data= result["data"];
+				if(data!="[]"){
+					for(var p in data){
+						var tr ="<tr class='text-c'>";
+						tr+="<td><input type='checkbox'></td>";
+						tr+="<td >"+p+"<br></td>";
+						tr+="<td>"+data[p].name+"</td>";
+						tr+="<td>"+data[p].zhuanye+"</td>";
+						tr+="<td>"+data[p].connectphone+"</td>";
+						tr+="<td>"+data[p].email+"</td>";
+						tr+="<td>"+data[p].qq+"</td>";
+						tr+="<td>"+data[p].gender+"</td>";
+						tr+="<td>"+data[p].techang+"</td></tr>";
+						$("#cp_search_stu_table").append(tr);
+					}
+				}
+			}else{
+//				alert(result["msg"]);
+			}
+			},
+		error:function(){
+//			alert("保存异常");
+		}
+	});
+}
+
+function deleteCurrentRow(obj){  
+    var tr=obj.parentNode.parentNode;  
+    var tbody=tr.parentNode;  
+    tbody.removeChild(tr);  
+    if(tbody.rows.length==1) {  
+        tbody.parentNode.removeChild(tbody);  
+    }  
+}  
 function setCookie(cname, cvalue, exdays) {
 	var d = new Date();
 	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));

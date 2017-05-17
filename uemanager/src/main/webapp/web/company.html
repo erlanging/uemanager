@@ -141,7 +141,7 @@
 		
 		<div class="zu-main-content-inner" id="company_zhaopin" style="display: none;">
 			<div id="header">
-				<p id="title" id="cp_zhaopin_title">Java资深开发工程师/Java开发专家</p>
+				<input  id="cp_zhaopin_title" value="Java资深开发工程师/Java开发专家" style="width: 500px;font-size: 26px;"/>
 			</div>
 			<div id="general">
 			
@@ -205,53 +205,37 @@
 		
 
 <div class="page-container" id="company_rencai" style="display: none;">
-	<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form">
-		<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" maxlength="100" placeholder="搜索姓名" role="combobox" aria-autocomplete="list" style="width: 50%;">
-		<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" maxlength="100" placeholder="搜索专业" role="combobox" aria-autocomplete="list" style="float: left;width: 50%;">
-		<button type="submit" class="zu-top-search-button" style="float: left;">搜索</button>
-	</form>
+	<div id="zh-top-search-form" class="zu-top-search-form">
+		<input type="text" class="zu-top-search-input" id="cp_search_stuname" autocomplete="off" value="" maxlength="100" placeholder="搜索姓名" role="combobox" aria-autocomplete="list" style="width: 50%;">
+		<input type="text" class="zu-top-search-input" id="cp_search_zhuanye" autocomplete="off" value="" maxlength="100" placeholder="搜索专业" role="combobox" aria-autocomplete="list" style="float: left;width: 50%;">
+		<button id="cp_search_student" onclick="cp_search_stu();" class="zu-top-search-button" style="float: left;">搜索</button>
+	</div>
 	<div class="cl pd-5 bg-1 bk-gray mt-20"></div>
-	<table class="table table-border table-bordered table-bg" border="1" bordercolor="#a0c6e5" style="border-collapse:collapse;text-align: center;">
+	<table id="cp_search_stu_table" class="table table-border table-bordered table-bg" border="1" bordercolor="#a0c6e5" style="border-collapse:collapse;text-align: center;">
 		<thead>
 			<tr class="text-c">
+				<th width="40">ID</th>
 				<th width="25"><input type="checkbox" name="" value=""></th>
-				<th width="150">登录名</th>
-				<th width="90">手机</th>
+				<th width="150">姓名</th>
+				<th width="90">专业</th>
+				<th width="150">手机</th>
 				<th width="150">邮箱</th>
-				<th width="150">招聘岗位</th>
-				<th width="130">加入时间</th>
-				<th width="100">是否入库</th>
+				<th width="80">qq</th>
+				<th width="30">性别</th>
+				<th width="150">特长</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr class="text-c">
-				<td><input type="checkbox" value="1" name=""></td>
-				<td>张山</td>
-				<td>13000000000</td>
-				<td>zhangshan@mail.com</td>
-				<td>Java开发</td>
-				<td>2017-4-11 09:11:42</td>
-				<td class="td-manage"><a>已入库</a></td>
-			</tr>
-			<tr class="text-c">
-				<td><input type="checkbox" value="2" name=""></td>
-				<td>李斯</td>
-				<td>13000000000</td>
-				<td>lisi@mail.com</td>
-				<td>Web前端</td>
-				<td>2017-6-17 11:34:42</td>
-				<td class="td-manage"><a>已入库</a></td>
-			</tr>
 		</tbody>
 	</table>
 </div>
 
 <div class="page-container" id="company_rencaimanager" style="display: none;"> 
-	<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form">
+<!-- 	<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form">
 		<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" maxlength="100" placeholder="搜索姓名" role="combobox" aria-autocomplete="list" style="width: 50%;">
 		<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" maxlength="100" placeholder="搜索专业" role="combobox" aria-autocomplete="list" style="float: left;width: 50%;">
 		<button type="submit" class="zu-top-search-button" style="float: left;">搜索</button>
-	</form>
+	</form> -->
 	<div class="cl pd-5 bg-1 bk-gray mt-20"></div>
 	<table class="table table-border table-bordered table-bg" border="1" bordercolor="#a0c6e5" style="border-collapse:collapse;text-align: center;">
 		<thead>
@@ -275,7 +259,7 @@
 				<td>Java开发</td>
 				<td>2017-4-11 09:11:42</td>
 				<td class="td-status"><span class="label label-success radius">已启用</span></td>
-				<td class="td-manage"><a>删除</a></td>
+				<td class="td-manage"><a onclick='{if(confirm("确定要删除这条记录吗?")) {deleteCurrentRow(this); }else {}}'>删除</a></td>
 			</tr>
 			<tr class="text-c">
 				<td><input type="checkbox" value="2" name=""></td>
@@ -285,7 +269,47 @@
 				<td>Web前端</td>
 				<td>2017-6-17 11:34:42</td>
 				<td class="td-status"><span class="label radius">已停用</span></td>
-				<td class="td-manage"><a>删除</a></td>
+				<td class="td-manage"><a onclick='{if(confirm("确定要删除这条记录吗?")) {deleteCurrentRow(this); }else {}}'>删除</a></td>
+			</tr>
+				<tr class="text-c">
+				<td><input type="checkbox" value="3" name=""></td>
+				<td>张山</td>
+				<td>13000000000</td>
+				<td>zhangshan@mail.com</td>
+				<td>Java开发</td>
+				<td>2017-4-11 09:11:42</td>
+				<td class="td-status"><span class="label label-success radius">已启用</span></td>
+				<td class="td-manage"><a onclick='{if(confirm("确定要删除这条记录吗?")) {deleteCurrentRow(this); }else {}}'>删除</a></td>
+			</tr>
+			<tr class="text-c">
+				<td><input type="checkbox" value="4" name=""></td>
+				<td>李斯</td>
+				<td>13000000000</td>
+				<td>lisi@mail.com</td>
+				<td>Web前端</td>
+				<td>2017-6-17 11:34:42</td>
+				<td class="td-status"><span class="label radius">已停用</span></td>
+				<td class="td-manage"><a onclick='{if(confirm("确定要删除这条记录吗?")) {deleteCurrentRow(this); }else {}}'>删除</a></td>
+			</tr>
+						<tr class="text-c">
+				<td><input type="checkbox" value="5" name=""></td>
+				<td>张山</td>
+				<td>13000000000</td>
+				<td>zhangshan@mail.com</td>
+				<td>Java开发</td>
+				<td>2017-4-11 09:11:42</td>
+				<td class="td-status"><span class="label label-success radius">已启用</span></td>
+				<td class="td-manage"><a onclick='{if(confirm("确定要删除这条记录吗?")) {deleteCurrentRow(this); }else {}}'>删除</a></td>
+			</tr>
+			<tr class="text-c">
+				<td><input type="checkbox" value="6" name=""></td>
+				<td>李斯</td>
+				<td>13000000000</td>
+				<td>lisi@mail.com</td>
+				<td>Web前端</td>
+				<td>2017-6-17 11:34:42</td>
+				<td class="td-status"><span class="label radius">已停用</span></td>
+				<td class="td-manage"><a onclick='{if(confirm("确定要删除这条记录吗?")) {deleteCurrentRow(this); }else {}}'>删除</a></td>
 			</tr>
 		</tbody>
 	</table>

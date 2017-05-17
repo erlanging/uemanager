@@ -97,4 +97,25 @@ public class StudentController extends BaseController{
 		Map<String, Object> result = studentService.saveStuJianli(stuJianli);
 		sendMessage(request, response, result);
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/searchjob", method = {RequestMethod.POST,RequestMethod.GET })
+	public void searchJob(HttpServletRequest request,HttpServletResponse response){
+		// 设置编码格式
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			logger.debug("不支持转码");
+			return;
+		}
+		response.setContentType("text/html;charset=utf-8");
+		String job = request.getParameter("job");
+		if(StringUtil.isEmpty(job)){
+			job = "%%";
+		}else{
+			job = "%"+job+"%";
+		}
+		Map<String, Object> result = studentService.searchJob(job);
+		sendMessage(request, response, result);
+	}
 }

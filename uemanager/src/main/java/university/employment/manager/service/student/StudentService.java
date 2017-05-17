@@ -34,4 +34,10 @@ public interface StudentService {
 	 * @return
 	 */
 	public Map<String, Object> saveStuJianli(SysStuJianli stuJianli);
+
+	/**学生检索招聘信息
+	 * @param job
+	 * @return
+	 */
+	public Map<String, Object> searchJob(String job);
 }
